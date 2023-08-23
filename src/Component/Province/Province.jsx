@@ -1,48 +1,32 @@
-import axios from 'axios';
+import React, { useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
-import React, { useState, useEffect } from 'react';
-
-
+import useChartData from "../Province/UseChartData";
+import "../Province/Province.css";
 
 function ProvincePage() {
-  const [chartData, setChartData] = useState({});
+  const [selectedProvince, setSelectedProvince] = useState('');
+  const chartData = useChartData(selectedProvince);
 
-  useEffect(() => {
-    axios
-      .get('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province-latest.json')
-      .then((response) => {
-        const provinceData = response.data;
-  
-        if (provinceData && provinceData.length > 0) {
-          // Estrai nomi delle province e totali casi in due array
-          const provinceNames = provinceData.map((item) => item.denominazione_provincia);
-          const totalCases = provinceData.map((item) => item.totale_casi);
-  
-          // Crea i dati del grafico
-          const chartData = {
-            labels: provinceNames,
-            datasets: [
-              {
-                label: 'Totale Casi',
-                data: totalCases,
-                backgroundColor: 'rgba(75, 192, 192, 0.6)', // Colore delle barre
-              },
-            ],
-          };
-          setChartData(chartData);
-        }
-      })
-      .catch((error) => {
-        // Gestisci gli errori qui
-        console.error('Errore nella richiesta API:', error);
-      });
-  }, []);
-  
+  const handleProvinceChange = (e) => {
+    setSelectedProvince(e.target.value);
+  };
 
   return (
     <div>
       <h1>Province Page</h1>
+      <select
+        value={selectedProvince}
+        onChange={handleProvinceChange}
+      >
+        <option value="">Seleziona una provincia</option>
+        {chartData.labels && chartData.labels.map((province, index) => (
+          <option key={index} value={province}>
+            {province}
+          </option>
+        ))}
+      </select>
+
       {chartData.labels && chartData.datasets && (
   <Bar
     data={chartData}
@@ -52,10 +36,21 @@ function ProvincePage() {
           beginAtZero: true,
         },
       },
+      plugins: {
+        legend: {
+          labels: {
+            color: 'red', 
+          },
+        },
+      },
     }}
   />
-)}
-      
+      )}
+
+
+
+
+
     </div>
   );
 }

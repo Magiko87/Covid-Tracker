@@ -1,0 +1,78 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+
+function useChartData(selectedProvince) {
+  const [chartData, setChartData] = useState({});
+
+  useEffect(() => {
+    axios
+      .get('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province-latest.json')
+      .then((response) => {
+        const provinceData = response.data;
+
+        if (provinceData && provinceData.length > 0) {
+          // Estrai nomi delle province e totali casi in due array
+          const provinceNames = provinceData.map((item) => item.denominazione_provincia);
+
+          if (selectedProvince === '') {
+            // Mostra tutti i dati
+            const totalCases = provinceData.map((item) => item.totale_casi);
+
+            const chartData = {
+              labels: provinceNames,
+              datasets: [
+                {
+                  label: 'Totale Casi',
+                  data: totalCases,
+                  backgroundColor: '#FF9900',
+                },
+              ],
+            };
+            const chartOptions = {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+              plugins: {
+                legend: {
+                  labels: {
+                    color: 'FF9900', 
+                  },
+                },
+              },
+            };
+
+            setChartData(chartData);
+          } else {
+            // Filtra i dati per la provincia selezionata
+            const filteredData = provinceData.filter(
+              (item) => item.denominazione_provincia === selectedProvince
+            );
+            const totalCases = filteredData.map((item) => item.totale_casi);
+
+            const chartData = {
+              labels: [selectedProvince],
+              datasets: [
+                {
+                  label: 'Totale Casi',
+                  data: totalCases,
+                  backgroundColor: "#FF9900"
+                },
+              ],
+            };
+            setChartData(chartData);
+          }
+        }
+      })
+      .catch((error) => {
+        // Gestisci gli errori 
+        console.error('Errore nella richiesta API:', error);
+      });
+  }, [selectedProvince]);
+
+  return chartData;
+}
+
+export default useChartData;
