@@ -25,24 +25,11 @@ function useChartData(selectedProvince) {
                 {
                   label: 'Totale Casi',
                   data: totalCases,
-                  backgroundColor: '#FF9900',
+                  backgroundColor: 'red',//colore grafico barre
                 },
               ],
             };
-            const chartOptions = {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                },
-              },
-              plugins: {
-                legend: {
-                  labels: {
-                    color: 'FF9900', 
-                  },
-                },
-              },
-            };
+           
 
             setChartData(chartData);
           } else {
@@ -56,9 +43,9 @@ function useChartData(selectedProvince) {
               labels: [selectedProvince],
               datasets: [
                 {
-                  label: 'Totale Casi',
+                  label: 'Totale Casi',//Grafico aperto
                   data: totalCases,
-                  backgroundColor: "#FF9900"
+                  backgroundColor: "orange"
                 },
               ],
             };

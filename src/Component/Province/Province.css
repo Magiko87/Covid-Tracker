@@ -8,7 +8,10 @@ body{
 h1 {
     display: flex;
     justify-content: center;
-    align-items: center4px solid #ccc;
-    border-radius: 4px;
-    color: orange;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
+.province-select{
+    color:orange;
+}
