@@ -1,30 +1,32 @@
-//====>ChartDataPROVINCE
-
-
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-
-
-
-function useChartData(selectedProvince) {
+function useChartData(selectedRegion, selectedProvince) {
   const [chartData, setChartData] = useState({});
- 
-
+  
   useEffect(() => {
     axios
       .get('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province-latest.json')
-      
       .then((response) => {
         const provinceData = response.data;
 
         if (provinceData && provinceData.length > 0) {
-          // Estrai nomi delle province e totali casi in due array
-          const provinceNames = provinceData.map((item) => item.denominazione_provincia);
+          if (selectedRegion === '') {
+            // Nessuna regione selezionata, mostra il grafico vuoto
+            setChartData({});
+            return;
+          }
+
+          // Filtra i dati per la regione selezionata
+          const filteredData = provinceData.filter(
+            (item) => item.denominazione_regione === selectedRegion
+          );
+
+          const provinceNames = filteredData.map((item) => item.denominazione_provincia);
 
           if (selectedProvince === '') {
-            // Mostra tutti i dati
-            const totalCases = provinceData.map((item) => item.totale_casi);
+            // Nessuna provincia selezionata, mostra tutti i dati della regione
+            const totalCases = filteredData.map((item) => item.totale_casi);
 
             const chartData = {
               labels: provinceNames,
@@ -39,19 +41,18 @@ function useChartData(selectedProvince) {
 
             setChartData(chartData);
           } else {
-            // Filtra i dati per la provincia selezionata
-            const filteredData = provinceData.filter(
+            // Filtra i dati anche per la provincia selezionata
+            const provinceDataFiltered = filteredData.filter(
               (item) => item.denominazione_provincia === selectedProvince
             );
-            const totalCases = filteredData.map((item) => item.totale_casi);
 
             const chartData = {
               labels: [selectedProvince],
               datasets: [
                 {
                   label: 'Totale Casi',
-                  data: totalCases,
-                  backgroundColor: "orange",//grafico aperto
+                  data: provinceDataFiltered.map((item) => item.totale_casi),
+                  backgroundColor: "orange", // Colore grafico barre
                 },
               ],
             };
@@ -66,7 +67,7 @@ function useChartData(selectedProvince) {
       .finally(() => {
         // Eventuali azioni da eseguire alla fine della chiamata API
       });
-  }, [selectedProvince]);
+  }, [selectedRegion, selectedProvince]);
 
   return chartData;
 }

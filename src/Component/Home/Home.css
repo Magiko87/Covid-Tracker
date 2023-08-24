@@ -20,4 +20,11 @@ background: linear-gradient(90deg, rgba(255,249,248,1) 0%, rgba(219,218,216,1) 5
     width: 400px;
     height: 250px;
      margin: 60px;
+     box-shadow: 5px 5px rgba(0, 0, 0, 0.454);
+
+  }
+  .descr{
+    font-size: xx-large;
+    font-weight: 600;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }

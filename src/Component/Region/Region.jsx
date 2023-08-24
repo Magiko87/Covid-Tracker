@@ -47,6 +47,7 @@ function RegionPage() {
         },
       },
     },
+    barThickness:20,
   };
 
   return (
@@ -69,11 +70,12 @@ function RegionPage() {
         <Loader /> // Visualizza lo spinner durante il caricamento
       ) : (
         chartData.labels && chartData.datasets && (
-          
+          <div className="chart-container">
           <Bar
             data={chartData}
             options={chartOptions}
           />
+          </div>
         )
       )}
     </div>
