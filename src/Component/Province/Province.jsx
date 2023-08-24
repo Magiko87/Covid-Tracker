@@ -26,12 +26,12 @@ function ProvincePage() {
     scales: {
       x: {
         ticks: {
-          color: 'blue',
+          color: 'black',
         },
       },
       y: {
         ticks: {
-          color: 'blue',
+          color: 'black',
         },
         beginAtZero: true,
       },
@@ -39,7 +39,7 @@ function ProvincePage() {
     plugins: {
       legend: {
         labels: {
-          color: 'white',
+          color: '',
         },
       },
     },
@@ -47,7 +47,7 @@ function ProvincePage() {
 
   return (
     <div>
-      <h1>Province Page</h1>
+      <h1 className='tit-pg' >Province</h1>
       <select
         value={selectedProvince}
         onChange={handleProvinceChange}

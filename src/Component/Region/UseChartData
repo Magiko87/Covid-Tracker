@@ -1,0 +1,69 @@
+//====>ChartDataREGIONI
+
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+function useRegionData(selectedRegion) {
+  const [regionData, setRegionData] = useState({});
+
+  useEffect(() => {
+    axios
+      .get('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni-latest.json')
+      .then((response) => {
+        const regionData = response.data;
+
+        if (regionData && regionData.length > 0) {
+          // Estrai nomi delle regioni e totali casi in due array
+          const regionNames = regionData.map((item) => item.denominazione_regione);
+
+          if (selectedRegion === '') {
+            // Mostra tutti i dati
+            const totalCases = regionData.map((item) => item.totale_casi);
+
+            const chartData = {
+              labels: regionNames,
+              datasets: [
+                {
+                  label: 'Totale Casi',
+                  data: totalCases,
+                  backgroundColor: 'blue', // Colore grafico barre
+                },
+              ],
+            };
+
+            setRegionData(chartData);
+          } else {
+            // Filtra i dati per la regione selezionata
+            const filteredData = regionData.filter(
+              (item) => item.denominazione_regione === selectedRegion
+            );
+            const totalCases = filteredData.map((item) => item.totale_casi);
+
+            const chartData = {
+              labels: [selectedRegion],
+              datasets: [
+                {
+                  label: 'Totale Casi',
+                  data: totalCases,
+                  backgroundColor: 'blue', // Colore grafico barre
+                },
+              ],
+            };
+
+            setRegionData(chartData);
+          }
+        }
+      })
+      .catch((error) => {
+        // Gestisci gli errori
+        console.error('Errore nella richiesta API:', error);
+      })
+      .finally(() => {
+        // Eventuali azioni da eseguire alla fine della chiamata API
+      });
+  }, [selectedRegion]);
+
+  return regionData;
+}
+
+export default useRegionData;

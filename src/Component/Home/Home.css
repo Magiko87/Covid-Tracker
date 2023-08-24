@@ -4,5 +4,20 @@ background: linear-gradient(90deg, rgba(255,249,248,1) 0%, rgba(219,218,216,1) 5
 }
   .tit{
     color: rgb(30, 8, 2);
-    padding-top: 40px;
+    padding-top: 60px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 50px;
+    margin-top: 20px;
+  }
+  .img-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding-top: 30px;
+  }
+   .img-cov{
+    width: 400px;
+    height: 250px;
+     margin: 60px;
   }

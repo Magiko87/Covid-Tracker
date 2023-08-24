@@ -7,8 +7,8 @@ import ProvincePage from "../Province/Province";
 
 const routes = [
   { path: "/", element: <HomePage />, name: "Home" },
-  { path: "/regions", element: <RegionPage />, name: "Region" },
-  { path: "/provinces", element: <ProvincePage />, name: "Province" },
+  { path: "/regioni", element: <RegionPage />, name: "Regioni" },
+  { path: "/province", element: <ProvincePage />, name: "Province" },
 ];
 
 export default routes;

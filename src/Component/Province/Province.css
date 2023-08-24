@@ -5,7 +5,9 @@ h1 {
     align-items: center;
     color: rgb(0, 0, 0);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-top: 40px;
+    
   }
 .province-select{
-    color:orange;
+    color:rgb(0, 0, 0);
 }

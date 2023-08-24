@@ -1,7 +1,12 @@
+//====>ChartDataPROVINCE
+
+
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import Loader from "../Loader/Loader";
+
+
+
 function useChartData(selectedProvince) {
   const [chartData, setChartData] = useState({});
  
@@ -9,6 +14,7 @@ function useChartData(selectedProvince) {
   useEffect(() => {
     axios
       .get('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province-latest.json')
+      
       .then((response) => {
         const provinceData = response.data;
 
@@ -26,7 +32,7 @@ function useChartData(selectedProvince) {
                 {
                   label: 'Totale Casi',
                   data: totalCases,
-                  backgroundColor: 'red', // Colore grafico barre
+                  backgroundColor: 'orange', // Colore grafico barre
                 },
               ],
             };
@@ -45,7 +51,7 @@ function useChartData(selectedProvince) {
                 {
                   label: 'Totale Casi',
                   data: totalCases,
-                  backgroundColor: "orange",
+                  backgroundColor: "orange",//grafico aperto
                 },
               ],
             };
