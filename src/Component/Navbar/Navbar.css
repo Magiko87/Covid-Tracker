@@ -1,0 +1,59 @@
+/* Navbar.css */
+
+.navbar {
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    background-color: #fdf9f9;
+    color: rgb(0, 0, 0);
+    height: 60px;
+    padding: 0 20px;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; 
+  }
+  
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    cursor: pointer;
+    padding: 20px;
+  }
+  
+  .bar {
+    width: 25px;
+    height: 3px;
+    background-color: rgb(4, 4, 4);
+    margin: 4px 0;
+    transition: 0.4s;
+  }
+  
+  .nav-list {
+    list-style: none;
+    padding: 0;
+    position: absolute;
+    top: 60px; 
+    right: 0;
+    background-color: #fffcfc;
+    width: 0;
+    overflow: hidden;
+    transition: 0.4s;
+  }
+  
+  .nav-list.open {
+    width: 200px;
+    
+  }
+  
+  .nav-list li {
+    padding: 20px;
+  }
+  
+  .nav-list a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+  }
+  

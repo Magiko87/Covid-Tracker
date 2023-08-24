@@ -6,8 +6,7 @@ import './Home.css';
 function HomePage() {
   return (
     <div className="home-container"> 
-      <h1>Home Page</h1>
-      <Link to="/provinces">Vai alla pagina delle Province</Link>
+      <h1 className='tit' >Covid Tracker</h1>
     </div>
   );
 }
