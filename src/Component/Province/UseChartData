@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-
+import Loader from "../Loader/Loader";
 function useChartData(selectedProvince) {
   const [chartData, setChartData] = useState({});
+ 
 
   useEffect(() => {
     axios
@@ -25,11 +26,10 @@ function useChartData(selectedProvince) {
                 {
                   label: 'Totale Casi',
                   data: totalCases,
-                  backgroundColor: 'red',//colore grafico barre
+                  backgroundColor: 'red', // Colore grafico barre
                 },
               ],
             };
-           
 
             setChartData(chartData);
           } else {
@@ -43,9 +43,9 @@ function useChartData(selectedProvince) {
               labels: [selectedProvince],
               datasets: [
                 {
-                  label: 'Totale Casi',//Grafico aperto
+                  label: 'Totale Casi',
                   data: totalCases,
-                  backgroundColor: "orange"
+                  backgroundColor: "orange",
                 },
               ],
             };
@@ -54,8 +54,11 @@ function useChartData(selectedProvince) {
         }
       })
       .catch((error) => {
-        // Gestisci gli errori 
+        // Gestisci gli errori
         console.error('Errore nella richiesta API:', error);
+      })
+      .finally(() => {
+        // Eventuali azioni da eseguire alla fine della chiamata API
       });
   }, [selectedProvince]);
 
