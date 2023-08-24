@@ -14,7 +14,12 @@
     right: 0;
     z-index: 1000; 
   }
-  
+  .navbar-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
   .menu-toggle {
     display: flex;
     flex-direction: column;
@@ -29,6 +34,7 @@
     background-color: rgb(4, 4, 4);
     margin: 4px 0;
     transition: 0.4s;
+    margin-left: 10px;
   }
   
   .nav-list {
