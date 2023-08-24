@@ -10,6 +10,8 @@ function RegionPage() {
   const [selectedRegion, setSelectedRegion] = useState('');
   const [isLoading, setIsLoading] = useState(true); // Aggiunto stato per il caricamento
   const chartData = useRegionData(selectedRegion);
+  const [chartType, setChartType] = useState('bar');
+
 
   useEffect(() => {
     // Quando i dati sono stati caricati, impostiamo isLoading su false
@@ -20,6 +22,7 @@ function RegionPage() {
 
   const handleRegionChange = (e) => {
     setSelectedRegion(e.target.value);
+    setChartType('line');
     setIsLoading(true); // Quando si cambia la regione, reimposta isLoading a true
   };
 
@@ -66,6 +69,7 @@ function RegionPage() {
         <Loader /> // Visualizza lo spinner durante il caricamento
       ) : (
         chartData.labels && chartData.datasets && (
+          
           <Bar
             data={chartData}
             options={chartOptions}
