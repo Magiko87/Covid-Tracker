@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
-import './DarkMode.css';
+import "./DarkMode.css"
 
-function DarkModeButton() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+function DarkModeButton(props) {
+  const { isDarkMode, toggleDarkMode } = props;
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+  const handleClick = () => {
+    toggleDarkMode();
   };
 
   return (
-    <div className={`dark-mode-button ${isDarkMode ? 'dark' : 'light'}`} onClick={toggleDarkMode}>
+    <button className="dark-mode-button" onClick={handleClick}>
       <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
-    </div>
+    </button>
   );
 }
+
+
+DarkModeButton.propTypes = {
+  isDarkMode: PropTypes.bool.isRequired,
+  toggleDarkMode: PropTypes.func.isRequired,
+};
 
 export default DarkModeButton;

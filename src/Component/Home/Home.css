@@ -4,27 +4,50 @@ background: linear-gradient(90deg, rgba(255,249,248,1) 0%, rgba(219,218,216,1) 5
 }
   .tit{
     color: rgb(30, 8, 2);
-    padding-top: 60px;
+    padding-top: 30px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 50px;
-    margin-top: 20px;
+    
   }
   .img-cont{
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    padding-top: 30px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-top: 10px;
+    padding-bottom: 40px;
   }
    .img-cov{
     width: 400px;
-    height: 250px;
-     margin: 60px;
+     margin: 0px;
      box-shadow: 5px 5px rgba(0, 0, 0, 0.454);
 
   }
   .descr{
+    
     font-size: xx-large;
     font-weight: 600;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .home-container{
+    
+    max-height: 100vh;
+
+  }  
+
+
+
+  @media (max-width: 768px){
+   
+   .img-cov{
+    margin-top:-50px ;
+    max-width: 100%;
+    height: auto;
+   }
+    .descr{
+      font-size: 20px;
+    }
   }

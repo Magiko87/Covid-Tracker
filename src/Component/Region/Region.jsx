@@ -60,7 +60,7 @@ function RegionPage() {
       >
         <option value="">Seleziona una regione</option>
         {chartData.labels && chartData.labels.map((region, index) => (
-          <option key={index} value={region}>
+          <option className="tend"key={index} value={region}>
             {region}
           </option>
         ))}
