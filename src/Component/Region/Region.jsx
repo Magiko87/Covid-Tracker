@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
@@ -8,22 +7,22 @@ import Loader from "../Loader/Loader";
 
 function RegionPage() {
   const [selectedRegion, setSelectedRegion] = useState('');
-  const [isLoading, setIsLoading] = useState(true); // Aggiunto stato per il caricamento
-  const chartData = useRegionData(selectedRegion);
+  const [isLoading, setIsLoading] = useState(true);
   const [chartType, setChartType] = useState('bar');
-
+  const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    // Quando i dati sono stati caricati, impostiamo isLoading su false
-    if (chartData.labels && chartData.datasets) {
+    if (tableData.length > 0) {
       setIsLoading(false);
     }
-  }, [chartData]);
+  }, [tableData]);
+
+  const chartData = useRegionData(selectedRegion, setTableData);
 
   const handleRegionChange = (e) => {
     setSelectedRegion(e.target.value);
     setChartType('line');
-    setIsLoading(true); // Quando si cambia la regione, reimposta isLoading a true
+    setIsLoading(true);
   };
 
   const chartOptions = {
@@ -43,11 +42,11 @@ function RegionPage() {
     plugins: {
       legend: {
         labels: {
-          color: '',
+          color: 'black', // Aggiunto un colore per le etichette della legenda
         },
       },
     },
-    barThickness:20,
+    barThickness: 20,
   };
 
   return (
@@ -60,24 +59,44 @@ function RegionPage() {
       >
         <option value="">Seleziona una regione</option>
         {chartData.labels && chartData.labels.map((region, index) => (
-          <option className="tend"key={index} value={region}>
+          <option className="tend" key={index} value={region}>
             {region}
           </option>
         ))}
       </select>
 
       {isLoading ? (
-        <Loader /> // Visualizza lo spinner durante il caricamento
+        <Loader />
       ) : (
         chartData.labels && chartData.datasets && (
           <div className="chart-container">
-          <Bar
-            data={chartData}
-            options={chartOptions}
-          />
+            <Bar
+              data={chartData}
+              options={chartOptions}
+            />
           </div>
         )
       )}
+      <table className="my-table">
+        <thead>
+          <tr>
+            <th>Regione</th>
+            <th>Guariti</th>
+            <th>Deceduti</th>
+            <th>Totale Casi</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tableData.map((item, index) => (
+            <tr key={index}>
+              <td>{item.region}</td>
+              <td>{item.recovered}</td>
+              <td>{item.deaths}</td>
+              <td>{item.totalCases}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

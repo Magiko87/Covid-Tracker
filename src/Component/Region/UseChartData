@@ -1,9 +1,7 @@
-//====>ChartDataREGIONI
-
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function useRegionData(selectedRegion) {
+function useRegionData(selectedRegion, setTableData) {
   const [regionData, setRegionData] = useState({});
 
   useEffect(() => {
@@ -12,12 +10,18 @@ function useRegionData(selectedRegion) {
       .then((response) => {
         const regionData = response.data;
 
+        const tableData = regionData.map((item) => ({
+          region: item.denominazione_regione,
+          totalCases: item.totale_casi,
+          deaths: item.deceduti,
+          recovered: item.dimessi_guariti,
+        }));
+        setTableData(tableData);
+
         if (regionData && regionData.length > 0) {
-          // Estrai nomi delle regioni e totali casi in due array
           const regionNames = regionData.map((item) => item.denominazione_regione);
 
           if (selectedRegion === '') {
-            // Mostra tutti i dati
             const totalCases = regionData.map((item) => item.totale_casi);
 
             const chartData = {
@@ -26,14 +30,13 @@ function useRegionData(selectedRegion) {
                 {
                   label: 'Totale Casi',
                   data: totalCases,
-                  backgroundColor: 'blue', // Colore grafico barre
+                  backgroundColor: 'blue',
                 },
               ],
             };
 
             setRegionData(chartData);
           } else {
-            // Filtra i dati per la regione selezionata
             const filteredData = regionData.filter(
               (item) => item.denominazione_regione === selectedRegion
             );
@@ -45,7 +48,7 @@ function useRegionData(selectedRegion) {
                 {
                   label: 'Totale Casi',
                   data: totalCases,
-                  backgroundColor: 'blue', // Colore grafico barre
+                  backgroundColor: 'blue',
                 },
               ],
             };
@@ -55,13 +58,9 @@ function useRegionData(selectedRegion) {
         }
       })
       .catch((error) => {
-        // Gestisci gli errori
         console.error('Errore nella richiesta API:', error);
-      })
-      .finally(() => {
-        // Eventuali azioni da eseguire alla fine della chiamata API
       });
-  }, [selectedRegion]);
+  }, [selectedRegion, setTableData]);
 
   return regionData;
 }

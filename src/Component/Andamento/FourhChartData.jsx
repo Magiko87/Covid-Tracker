@@ -28,7 +28,7 @@ function FourthChart() {
             datasets: [
               {
                 data: [positivi, guariti,deceduti],
-                backgroundColor: ['#00ffff', '#808000','#000000'],
+                backgroundColor: ['#d3305d', '#007fff','#293133'],
               },
             ],
           };
@@ -59,7 +59,7 @@ function FourthChart() {
       {isLoading ? (
        <Loader />
       ) : (
-        <div className="chart-container-torta-second">
+        <div className="chart-container-torta">
           <h4>TOTALE CASI: {Totalcasi}</h4>
           <Doughnut
             data={chartData}

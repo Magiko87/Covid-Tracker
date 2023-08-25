@@ -58,7 +58,7 @@ function ThirdChart() {
       {isLoading ? (
        <Loader />
       ) : (
-        <div className="chart-container-torta-second">
+        <div className="chart-container-torta">
           <h4>TOTALE OSPEDALIZZATI: {totalOsp}</h4>
           <Doughnut
             data={chartData}

@@ -1,14 +1,4 @@
-h1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgb(0, 0, 0);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding-top: 40px;
-    margin-bottom: 50px;
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.524);
-    
-  }
+
 .region-select{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     appearance: none;
@@ -22,3 +12,44 @@ h1 {
     cursor: pointer;
     box-shadow: 5px 5px rgba(0, 0, 0, 0.454);
 }
+
+.my-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 80px;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.454);
+  border :3px solid rgb(0, 0, 0);
+  background-color: rgb(182, 222, 236);
+  
+
+ 
+}
+
+.my-table th,
+.my-table td {
+  border: 1px solid #4e4f50;
+  padding: 8px;
+  text-align: left;
+  color: rgb(0, 0, 0);
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
+}
+
+.my-table th {
+  background-color: rgba(1, 34, 69, 0.907);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #fff4f4;
+  border: 2px solid #000000;
+  border-bottom: 3px solid black;
+}
+
+.my-table tr:nth-child(even) {
+  background-color: #fff9f9;
+  color: black;
+  
+}
+
+
+
+
+

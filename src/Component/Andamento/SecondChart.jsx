@@ -57,7 +57,7 @@ function SecondChart() {
       {isLoading ? (
        <Loader />
       ) : (
-        <div className="chart-container-torta-second">
+        <div className="chart-container-torta">
           <h4>TOTALE TAMPONI: {totalTamponi}</h4>
           <Doughnut
             data={chartData}

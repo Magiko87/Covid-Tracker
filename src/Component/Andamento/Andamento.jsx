@@ -52,8 +52,8 @@ function AndamentoPage() {
       ) : (
         chartData.labels && chartData.datasets && (
           <div className="chart-container-torta">
-              <h4>TOTALE CASI POSITIVI: {totalSum}</h4>
-            <Doughnut // Usa il componente Doughnut per il grafico a torta
+              <h4>TOTALE TEST POSITIVI: {totalSum}</h4>
+            <Doughnut
               data={chartData}
               options={chartOptions}
             />
