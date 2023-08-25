@@ -13,7 +13,7 @@ function useChartData() {
         if (data && data.length > 0) {
           const totalPositiveMolecular = data.map((item) => item.totale_positivi_test_molecolare);
           const totalPositiveAntigen = data.map((item) => item.totale_positivi_test_antigenico_rapido);
-          const totalCasi = data.map((item)=> item.totale_casi);
+       
 
           const chartData = {
             labels: ['Totale Positivi Test Molecolare', 'Totale Positivi Test Antigenico Rapido'],

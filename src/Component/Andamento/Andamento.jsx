@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2'; // Importa Doughnut invece di Bar
 import 'chart.js/auto';
-import useChartData from "../Andamento/UserChartData" 
+import useChartData from "./FirstChartData" 
+import SecondChart from './SecondChart';
+import ThirdChart from './ThirdChart';
+import FourthChart from './FourhChartData';
 import "../Andamento/Andamento.css";  
 import Loader from "../Loader/Loader";
 
@@ -25,7 +28,7 @@ function AndamentoPage() {
 
   const handleDataChange = (e) => {
     setSelectedData(e.target.value);
-    setChartType('doughnut'); // Imposta il tipo di grafico a 'doughnut'
+    setChartType('doughnut'); 
     setIsLoading(true);
   };
 
@@ -49,7 +52,7 @@ function AndamentoPage() {
       ) : (
         chartData.labels && chartData.datasets && (
           <div className="chart-container-torta">
-              <h4>TOTALE CASI: {totalSum}</h4>
+              <h4>TOTALE CASI POSITIVI: {totalSum}</h4>
             <Doughnut // Usa il componente Doughnut per il grafico a torta
               data={chartData}
               options={chartOptions}
@@ -57,6 +60,9 @@ function AndamentoPage() {
           </div>
         )
       )}
+       <SecondChart />
+       <ThirdChart />
+       <FourthChart />
     </div>
   );
 }
