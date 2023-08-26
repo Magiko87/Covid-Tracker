@@ -5,7 +5,10 @@
   padding: 2rem;
   text-align: center;
 }
-
+footer{
+font-weight: 700;
+margin-top: 100px;
+}
 @media only screen and (max-width: 768px) {
   body {
     background: rgb(255, 249, 248);
@@ -17,13 +20,13 @@
     );
     margin: 0;
     padding: 0;
-    display: flex; /* Rendi il body un flex container */
-    justify-content: center; /* Allinea orizzontalmente al centro */
-    align-items: center; /* Allinea verticalmente al centro */
-    min-height: 100vh; /* Imposta l'altezza minima al 100% della viewport */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
   }
 
-  /* Altre regole CSS per schermi più piccoli */
+  /* RegionPage */
   .my-table {
     font-size: 12px;
 
@@ -35,55 +38,6 @@
       background-color: rgb(182, 222, 236);
       
   }
-
-  .chart-container-R {
-    box-shadow: 5px 5px rgba(0, 0, 0, 0.571);
-    width: 280px;
-    margin-top: 50px;
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: 20px;
-    background-color: rgb(182, 222, 236);
-    overflow-y: auto;
-  }
-  .chart-container-torta {
-    position: relative;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-     box-shadow: 5px 5px rgba(0, 0, 0, 0.571);
-     width: 200px;
-     margin-top: 100px;
-    background-color: rgb(177, 171, 171);
-      border: 3px solid black;
-      border-radius: 5px;
-      overflow-y: auto;
-}
-.chart-container-P {
-  box-shadow: 5px 5px rgba(0, 0, 0, 0.571);
-  width: 300px; 
-  margin: 0 auto; 
-  margin-top: 50px;
-  border :3px solid rgb(0, 0, 0);
-  border-radius: 20px;
-  background-color: rgb(182, 222, 236);
-  max-width: 100%;
-  margin-bottom: 200px;
-  
-  
-  }
-
-  .custom-select-P{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    appearance: none;
-    padding: 3px;
-    font-size: 10px;
-    border: 3px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-     outline: none;
-    cursor: pointer;
-   
-    box-shadow: 5px 5px rgba(0, 0, 0, 0.454);
-  }
-
 
 .custom-select-R{
   
@@ -99,23 +53,106 @@
   box-shadow: 5px 5px rgba(0, 0, 0, 0.454);
   
 }
-  .img-cont {
-    width: 150px;
-    margin-right: 100px;
-    margin-top: 300px;
-  }
 
-  .descr {
-    padding: 20px;
-    width: 150px;
+  .chart-container-R {
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.571);
+    width: 280px;
+    margin-top: 50px;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    background-color: rgb(182, 222, 236);
+    overflow-y: auto;
   }
+  /* ProvincePage */
+  .chart-container-P {
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.571);
+  width: 300px; 
+  margin: 0 auto; 
+  margin-top: 50px;
+  border :3px solid rgb(0, 0, 0);
+  border-radius: 20px;
+  background-color: rgb(182, 222, 236);
+  max-width: 100%;
+  margin-bottom: 200px;
+  }
+  .custom-select-P{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    appearance: none;
+    padding: 3px;
+    font-size: 10px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+     outline: none;
+    cursor: pointer;
+   
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.454);
+  }
+  /* AndamentiPage */
+  .chart-container-torta {
+    position: relative;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+     box-shadow: 5px 5px rgba(0, 0, 0, 0.571);
+     width: 200px;
+     margin-top: 100px;
+    background-color: rgb(177, 171, 171);
+      border: 3px solid black;
+      border-radius: 5px;
+      overflow-y: auto;
+}
 
-  .tit {
-    width: 300px;
-  }
+  
+
+/* HomePage */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px; /* Aggiungi spaziatura uniforme su tutti i lati */
+  box-sizing: border-box; /* Assicurati che il padding sia incluso nelle dimensioni totali */
+}
+
+.tit {
+  width: 100%; /* Utilizza tutta la larghezza disponibile */
+  max-width: 300px; /* Imposta una larghezza massima */
+  margin-top: 20px;
+}
+
+.descr {
+  font-size: large;
+  font-weight: 600;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 10px; /* Spaziatura uniforme su tutti i lati */
+  margin-top: 20px;
+}
+
+.img-cont {
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.img-cov {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  margin-top: auto; /* Sposta il footer verso il basso in fondo alla pagina */
+  padding: 10px 0;
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
+
+
+  /* Comune */
   .tit-pga{
     display: flex;
-    font-size: 30px;
+    font-size: 50px;
     justify-content: center;
     align-items: center;
     color: rgb(0, 0, 0);
@@ -123,8 +160,12 @@
     padding-top: 40px;
     margin-bottom: 50px;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.524);
-    
-  
   
   }
+  footer{
+    font-weight: 700;
+    
+      margin-top: 250;
+      margin-bottom: 0;
+    
 }

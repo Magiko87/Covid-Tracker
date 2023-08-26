@@ -4,12 +4,14 @@ import 'chart.js/auto';
 import useChartData from "../Province/UseChartData";
 import "../Province/Province.css";
 import Loader from "../Loader/Loader";
+import ErrorPage from '../Error/Error';
 import DataDisplay from '../DataDisplay/DataDisplay';
 
 function ProvincePage() {
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedProvince, setSelectedProvince] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const chartData = useChartData(selectedRegion, selectedProvince);
   
 
@@ -140,6 +142,7 @@ function ProvincePage() {
     const province = e.target.value;
     setSelectedProvince(province);
     setIsLoading(true);
+    setHasError(false);
   };
 
   const chartOptions = {
@@ -199,6 +202,8 @@ function ProvincePage() {
 
       {isLoading ? (
         <Loader />
+      ) : hasError ? ( 
+        <ErrorPage />
       ) : (
         chartData.labels && chartData.datasets && (
          <div className="chart-container-P">

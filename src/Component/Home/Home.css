@@ -35,21 +35,10 @@ margin: 0;
     padding-right: 40px;
   }
   .home-container{
-    
+  
     max-height: 100vh;
 
   }  
 
 
 
-  @media (max-width: 768px){
-   
-   .img-cov{
-    margin-top:-50px ;
-    max-width: 100%;
-    height: auto;
-   }
-    .descr{
-      font-size: 20px;
-    }
-  }

@@ -3,6 +3,7 @@ import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
 import useRegionData from "../Region/UseChartData"; 
 import "../Region/Region.css";  
+import ErrorPage from '../Error/Error';
 import Loader from "../Loader/Loader";
 import  DataDisplay from "../DataDisplay/DataDisplay";
 
@@ -11,6 +12,7 @@ function RegionPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [chartType, setChartType] = useState('bar');
   const [tableData, setTableData] = useState([]);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     if (tableData.length > 0) {
@@ -24,6 +26,7 @@ function RegionPage() {
     setSelectedRegion(e.target.value);
     setChartType('line');
     setIsLoading(true);
+    setHasError(false);
   };
 
   const chartOptions = {
@@ -71,7 +74,9 @@ function RegionPage() {
 
       {isLoading ? (
         <Loader />
-      ) : (
+        ) : hasError ? ( 
+          <ErrorPage />
+        ) : (
         chartData.labels && chartData.datasets && (
           <div className="chart-container-R">
             <Bar

@@ -1,11 +1,10 @@
-// eslint-disable-next-line no-unused-vars
 import React from 'react';
 
 function ErrorPage() {
   return (
     <div>
-      <h1>Error Page</h1>
-     
+      <h1>Errore</h1>
+      <p>Si è verificato un errore durante il caricamento della pagina.</p>
     </div>
   );
 }
