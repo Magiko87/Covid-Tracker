@@ -1,4 +1,3 @@
-
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -144,7 +143,7 @@ footer {
   margin-top: auto; /* Sposta il footer verso il basso in fondo alla pagina */
   padding: 10px 0;
   text-align: center;
-  background-color: #f0f0f0;
+ 
 }
 
 
@@ -162,10 +161,3 @@ footer {
     text-shadow: 2px 2px rgba(0, 0, 0, 0.524);
   
   }
-  footer{
-    font-weight: 700;
-    
-      margin-top: 250;
-      margin-bottom: 0;
-    
-}
