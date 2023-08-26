@@ -6,9 +6,9 @@ import SecondChart from './SecondChart';
 import ThirdChart from './ThirdChart';
 import ErrorPage from "../Error/Error"
 import FourthChart from './FourhChartData';
-import "../Andamento/Andamento.css";  
 import Loader from "../Loader/Loader";
 import DataDisplay from '../DataDisplay/DataDisplay';
+import "../Andamento/Andamento";
 
 
 function AndamentoPage() {
