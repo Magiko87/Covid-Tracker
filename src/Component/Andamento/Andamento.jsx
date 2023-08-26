@@ -8,7 +8,7 @@ import ErrorPage from "../Error/Error"
 import FourthChart from './FourhChartData';
 import Loader from "../Loader/Loader";
 import DataDisplay from '../DataDisplay/DataDisplay';
-import "../Andamento/Andamento.css";
+import './style.css';
 
 
 function AndamentoPage() {
