@@ -4,6 +4,7 @@ import 'chart.js/auto';
 import useChartData from "../Province/UseChartData";
 import "../Province/Province.css";
 import Loader from "../Loader/Loader";
+import DataDisplay from '../DataDisplay/DataDisplay';
 
 function ProvincePage() {
   const [selectedRegion, setSelectedRegion] = useState('');
@@ -209,6 +210,7 @@ function ProvincePage() {
         </div>
         )
       )}
+      <DataDisplay />
     </div>
   );
 }

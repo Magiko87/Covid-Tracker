@@ -4,6 +4,7 @@ import 'chart.js/auto';
 import useRegionData from "../Region/UseChartData"; 
 import "../Region/Region.css";  
 import Loader from "../Loader/Loader";
+import  DataDisplay from "../DataDisplay/DataDisplay";
 
 function RegionPage() {
   const [selectedRegion, setSelectedRegion] = useState('');
@@ -103,6 +104,7 @@ function RegionPage() {
           </tbody>
         </table>
       </div>
+     < DataDisplay />
     </div>
   );
 }

@@ -7,6 +7,7 @@ import ThirdChart from './ThirdChart';
 import FourthChart from './FourhChartData';
 import "../Andamento/Andamento.css";  
 import Loader from "../Loader/Loader";
+import DataDisplay from '../DataDisplay/DataDisplay';
 
 function AndamentoPage() {
   const [selectedData, setSelectedData] = useState('');
@@ -62,6 +63,7 @@ function AndamentoPage() {
        <SecondChart />
        <ThirdChart />
        <FourthChart />
+       <DataDisplay />
     </div>
   );
 }
