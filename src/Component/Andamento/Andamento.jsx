@@ -12,7 +12,6 @@ function AndamentoPage() {
   const [selectedData, setSelectedData] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const chartData = useChartData(selectedData);
-  const [chartType, setChartType] = useState('doughnut');
   const [totalSum, setTotalSum] = useState(0);
   
 
@@ -20,18 +19,18 @@ function AndamentoPage() {
   useEffect(() => {
     if (chartData.labels && chartData.datasets) {
       setIsLoading(false);
-      const sum = chartData.datasets[0].data.reduce((acc, currentValue) => acc + currentValue, 0);
-       setTotalSum(sum);
 
+      const sum = chartData.datasets[0].data.reduce((acc, currentValue) => acc + currentValue, 0);
+      const formattedSum = sum.toLocaleString('it-IT', {
+        style: 'decimal',
+        useGrouping: true,
+      });
+  
+      setTotalSum(formattedSum);
     }
   }, [chartData]);
 
-  const handleDataChange = (e) => {
-    setSelectedData(e.target.value);
-    setChartType('doughnut'); 
-    setIsLoading(true);
-  };
-
+ 
   const chartOptions = {
     plugins: {
       legend: {
@@ -44,7 +43,7 @@ function AndamentoPage() {
 
   return (
     <div>
-      <h1 className='tit-pg'>Andamento</h1>
+      <h1 className='tit-pga'>Andamento</h1>
       
 
       {isLoading ? (

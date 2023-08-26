@@ -46,7 +46,10 @@ function RegionPage() {
         },
       },
     },
-    barThickness: 20,
+    barThickness: 15,
+    indexAxis: 'y',
+    maintainAspectRatio: false, 
+    height: 400,
   };
 
   return (
@@ -55,7 +58,7 @@ function RegionPage() {
       <select
         value={selectedRegion}
         onChange={handleRegionChange}
-        className="region-select"
+        className="custom-select-R"
       >
         <option value="">Seleziona una regione</option>
         {chartData.labels && chartData.labels.map((region, index) => (
@@ -69,34 +72,37 @@ function RegionPage() {
         <Loader />
       ) : (
         chartData.labels && chartData.datasets && (
-          <div className="chart-container">
+          <div className="chart-container-R">
             <Bar
               data={chartData}
               options={chartOptions}
+              width={400}
             />
           </div>
         )
       )}
-      <table className="my-table">
-        <thead>
-          <tr>
-            <th>Regione</th>
-            <th>Guariti</th>
-            <th>Deceduti</th>
-            <th>Totale Casi</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tableData.map((item, index) => (
-            <tr key={index}>
-              <td>{item.region}</td>
-              <td>{item.recovered}</td>
-              <td>{item.deaths}</td>
-              <td>{item.totalCases}</td>
+       <div className="table-container">
+        <table className="my-table">
+          <thead>
+            <tr>
+              <th>Regione</th>
+              <th>Guariti</th>
+              <th>Deceduti</th>
+              <th>Totale Casi</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {tableData.map((item, index) => (
+              <tr key={index}>
+                <td>{item.region}</td>
+                <td>{item.recovered}</td>
+                <td>{item.deaths}</td>
+                <td>{item.totalCases}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

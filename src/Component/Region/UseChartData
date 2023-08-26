@@ -10,14 +10,6 @@ function useRegionData(selectedRegion, setTableData) {
       .then((response) => {
         const regionData = response.data;
 
-        const tableData = regionData.map((item) => ({
-          region: item.denominazione_regione,
-          totalCases: item.totale_casi,
-          deaths: item.deceduti,
-          recovered: item.dimessi_guariti,
-        }));
-        setTableData(tableData);
-
         if (regionData && regionData.length > 0) {
           const regionNames = regionData.map((item) => item.denominazione_regione);
 
@@ -36,6 +28,15 @@ function useRegionData(selectedRegion, setTableData) {
             };
 
             setRegionData(chartData);
+
+            const tableData = regionData.map((item) => ({
+              region: item.denominazione_regione,
+              totalCases: item.totale_casi.toLocaleString('it-IT'),
+              deaths: item.deceduti.toLocaleString('it-IT'),
+              recovered: item.dimessi_guariti.toLocaleString('it-IT'),
+            }));
+
+            setTableData(tableData);
           } else {
             const filteredData = regionData.filter(
               (item) => item.denominazione_regione === selectedRegion
@@ -54,6 +55,15 @@ function useRegionData(selectedRegion, setTableData) {
             };
 
             setRegionData(chartData);
+
+            const tableData = filteredData.map((item) => ({
+              region: item.denominazione_regione,
+              totalCases: item.totale_casi.toLocaleString('it-IT'),
+              deaths: item.deceduti.toLocaleString('it-IT'),
+              recovered: item.dimessi_guariti.toLocaleString('it-IT'),
+            }));
+
+            setTableData(tableData);
           }
         }
       })

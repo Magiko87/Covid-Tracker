@@ -22,6 +22,10 @@ function FourthChart() {
 
           // Calcola la somma delle osp.
           const totalCasiValue = positivi + guariti + deceduti;
+          const formattedSum = totalCasiValue.toLocaleString('it-IT', {
+            style: 'decimal',
+            useGrouping: true,
+          });
 
           const chartData = {
             labels: ['Positivi', 'Guariti','Deceduti'],
@@ -34,7 +38,7 @@ function FourthChart() {
           };
 
           setChartData(chartData);
-          setTotalcasi(totalCasiValue);
+          setTotalcasi(formattedSum);
           setIsLoading(false);
         }
       })

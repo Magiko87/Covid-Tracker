@@ -20,6 +20,14 @@ function SecondChart() {
           
           // Calcola la somma dei tamponi
           const totalTamponiValue = tamponiMolecolari + tamponiAntigenici;
+          const formattedSum = totalTamponiValue.toLocaleString('it-IT', {
+            style: 'decimal',
+            useGrouping: true,
+          });
+          
+          
+
+          
 
           const chartData = {
             labels: ['Tamponi Test Molecolare', 'Tamponi Test Antigenico Rapido'],
@@ -31,8 +39,9 @@ function SecondChart() {
             ],
           };
 
+
           setChartData(chartData);
-          setTotalTamponi(totalTamponiValue);
+          setTotalTamponi(formattedSum);
           setIsLoading(false);
         }
       })

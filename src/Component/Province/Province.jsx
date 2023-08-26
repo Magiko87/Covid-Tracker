@@ -162,13 +162,16 @@ function ProvincePage() {
         },
       },
     },
-    barThickness:30,
+    barThickness:15,
+    indexAxis: 'y',
+    maintainAspectRatio: false, 
+    height: 100,
   };
 
   return (
     <div className='tend'>
       <h1 className='tit-pg' >Province</h1>
-      <select className="custom-select" onChange={handleRegionChange}>
+      <select className="custom-select-P" onChange={handleRegionChange}>
         <option value="">Seleziona una regione</option>
         {regioni.map((regione, index) => (
           <option key={index} value={regione.nome}>
@@ -182,7 +185,7 @@ function ProvincePage() {
         <select
           value={selectedProvince}
           onChange={handleProvinceChange}
-          className="custom-select"
+          className="custom-select-P"
         >
           <option value="">Seleziona una provincia</option>
           {provinceOptions.map((province, index) => (
@@ -197,7 +200,7 @@ function ProvincePage() {
         <Loader />
       ) : (
         chartData.labels && chartData.datasets && (
-         <div className="chart-container">
+         <div className="chart-container-P">
           <Bar
             data={chartData}
             options={chartOptions}

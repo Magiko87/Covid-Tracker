@@ -21,6 +21,11 @@ function ThirdChart() {
 
           // Calcola la somma delle osp.
           const totalOspValue = terapiaIntensiva + ricoveratiSintomatici;
+          const formattedSum = totalOspValue.toLocaleString('it-IT', {
+            style: 'decimal',
+            useGrouping: true,
+          });
+          
 
           const chartData = {
             labels: ['Terapia Intensiva', 'Ricoverati Asintomatici'],
@@ -33,7 +38,7 @@ function ThirdChart() {
           };
 
           setChartData(chartData);
-          setTotalOsp(totalOspValue);
+          setTotalOsp(formattedSum);
           setIsLoading(false);
         }
       })

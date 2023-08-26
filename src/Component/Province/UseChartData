@@ -21,6 +21,7 @@ function useChartData(selectedRegion, selectedProvince) {
           const filteredData = provinceData.filter(
             (item) => item.denominazione_regione === selectedRegion
           );
+          filteredData.splice(-2);
 
           const provinceNames = filteredData.map((item) => item.denominazione_provincia);
 
