@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { Link } from 'react-router-dom';
-import styles from '../Home/Home.modules.css';
+import  '../Home/Home.css';
 
 
 

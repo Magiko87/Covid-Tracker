@@ -18,6 +18,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative; 
     
   }
   .menu-toggle {
@@ -54,7 +55,9 @@
     width: 200px;
     
   }
-  
+  .navbar-content.open .nav-list {
+  width: 200px;
+}
   .nav-list li {
     padding: 20px;
   }
