@@ -39,7 +39,7 @@ function DataDisplay() {
         <Loader />
       ) : (
         <div>
-           <h className="data-s">Dati aggiornati al {format(new Date(data1[0].data), 'dd MMMM yyyy')}</h>
+           <h1 className="data-s">Dati aggiornati al {format(new Date(data1[0].data), 'dd MMMM yyyy')}</h1>
 
         </div>
       )}
