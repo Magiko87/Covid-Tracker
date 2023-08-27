@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
-import useChartData from "./UseChartData";
+import useChartData from "./useChartData";
 import "./Province.css";
 import ErrorPage from '../Error/Error';
 import Loader from "../Loader/Loader";
@@ -11,7 +11,7 @@ import axios from 'axios';
 function ProvincePage({ isDarkMode }) {
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedProvince, setSelectedProvince] = useState('');
-  const [isLoading, setIsLoading] = useState(false); 
+  const [isLoading, setIsLoading] = useState(false);
   const [chartType, setChartType] = useState('bar');
   const [tableData, setTableData] = useState([]);
   const [hasError, setHasError] = useState(false);
@@ -41,31 +41,41 @@ function ProvincePage({ isDarkMode }) {
   }, []);
 
   useEffect(() => {
-    const filteredProvinces = chartData.provinces.filter((province) => province.denominazione_regione === selectedRegion);
-    setFilteredProvinces(filteredProvinces);
-    setSelectedProvince('');
-    setIsLoading(false); 
-    setHasError(false);
+    if (selectedRegion) {
+      // Se è selezionata solo la regione, mostra tutte le province di quella regione
+      const filteredProvinces = chartData.provinces.filter((province) => province.denominazione_regione === selectedRegion);
+      
+      // Rimuovi le ultime due province dalla lista
+      const slicedProvinces = filteredProvinces.slice(0, filteredProvinces.length - 2);
+      
+      setFilteredProvinces(slicedProvinces);
+      setIsLoading(false);
+      setHasError(false);
+    } else {
+      // Quando la regione non è selezionata, mostra solo il messaggio "Seleziona una regione"
+      setIsLoading(false);
+    }
   }, [selectedRegion, chartData.provinces]);
 
   useEffect(() => {
     if (tableData.length > 0) {
-      setIsLoading(false); 
+      setIsLoading(false);
     } else {
-      setIsLoading(false); 
+      setIsLoading(false);
     }
   }, [tableData]);
 
   const handleRegionChange = (e) => {
     setSelectedRegion(e.target.value);
-    setChartType('line');
-    setIsLoading(true); 
+    setSelectedProvince('');
+    setChartType('bar');
+    setIsLoading(true);
   };
 
   const handleProvinceChange = (e) => {
     setSelectedProvince(e.target.value);
-    setChartType('line');
-    setIsLoading(true); 
+    setChartType('bar');
+    setIsLoading(true);
     setHasError(false);
   };
 
@@ -81,6 +91,10 @@ function ProvincePage({ isDarkMode }) {
           color: 'black',
         },
         beginAtZero: true,
+        callback: function (value) {
+          // Aggiungi il punto ogni tre cifre nei numeri
+          return value.toLocaleString();
+        },
       },
     },
     plugins: {
@@ -95,6 +109,42 @@ function ProvincePage({ isDarkMode }) {
     maintainAspectRatio: false,
     height: 400,
   };
+
+  let chartDataObject = {};
+
+  if (selectedRegion && selectedProvince) {
+    // Se è selezionata sia la regione che la provincia, mostra solo quella provincia
+    const selectedProvinceData = chartData.provinces.find(
+      (province) => province.denominazione_regione === selectedRegion && province.denominazione_provincia === selectedProvince
+    );
+
+    chartDataObject = {
+      labels: [selectedProvinceData.denominazione_provincia],
+      datasets: [
+        {
+          label: 'Totale Casi',
+          data: [selectedProvinceData.totale_casi],
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1,
+        },
+      ],
+    };
+  } else if (selectedRegion) {
+    // Se è selezionata solo la regione, mostra tutte le province di quella regione
+    chartDataObject = {
+      labels: filteredProvinces.map((province) => province.denominazione_provincia),
+      datasets: [
+        {
+          label: 'Totale Casi',
+          data: filteredProvinces.map((province) => province.totale_casi),
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1,
+        },
+      ],
+    };
+  }
 
   return (
     <div>
@@ -112,68 +162,38 @@ function ProvincePage({ isDarkMode }) {
         ))}
       </select>
 
-      <select
-        value={selectedProvince}
-        onChange={handleProvinceChange}
-        className="custom-select-P"
-      >
-        <option value="">Seleziona una provincia</option>
-        {filteredProvinces.map((province, index) => (
-          <option className="tend" key={index} value={province.denominazione_provincia}>
-            {province.denominazione_provincia}
-          </option>
-        ))}
-      </select>
-
-      {(selectedRegion === '' && selectedProvince === '') ? null : isLoading ? (
+      {isLoading ? (
         <Loader />
       ) : hasError ? (
         <ErrorPage />
-      ) : (selectedRegion !== '' && tableData.length > 0) ? (
+      ) : selectedRegion ? (
         <div className="chart-container-P">
           <Bar
-            data={{
-              labels: tableData.map((item) => item.province),
-              datasets: [
-                {
-                  label: 'Totale Casi',
-                  data: tableData.map((item) => item.totalCases),
-                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                  borderColor: 'rgba(75, 192, 192, 1)',
-                  borderWidth: 1,
-                },
-              ],
-            }}
+            data={chartDataObject}
             options={chartOptions}
             width={400}
           />
         </div>
       ) : null}
 
-      {(selectedRegion !== '' && selectedProvince !== '') ? (
+      {selectedRegion ? (
         <div className="table-container">
-          {tableData.length > 0 ? (
-            <table className="my-table">
-              <thead>
-                <tr>
-                  <th>Provincia</th>
-                  <th>Guariti</th>
-                  <th>Deceduti</th>
-                  <th>Totale Casi</th>
+          <table className="my-table">
+            <thead>
+              <tr>
+                <th>Provincia</th>
+                <th>Totale Casi</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredProvinces.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.denominazione_provincia}</td>
+                  <td>{item.totale_casi.toLocaleString()}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {tableData.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.province}</td>
-                    <td>{item.recovered}</td>
-                    <td>{item.deaths}</td>
-                    <td>{item.totalCases}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : null}
+              ))}
+            </tbody>
+          </table>
         </div>
       ) : null}
       <DataDisplay />
