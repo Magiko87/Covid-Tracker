@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
-import useChartData from "./useChartData";
+import useChartData from "./UseChartData";
 import "./Province.css";
 import ErrorPage from '../Error/Error';
 import Loader from "../Loader/Loader";
