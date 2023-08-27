@@ -1,5 +1,24 @@
+/* Stili per la modalità Dark */
 
-  .dark {
-    background-color: rgb(255, 119, 0);
-    /* Altri stili per la modalità dark */
+/* --->Navbar */
+.navbar.dark-mode {
+  
+  background-color: rgb(0, 0, 0);
+
   }
+  .bar.dark-mode{
+    background-color: rgb(248, 126, 3);
+  }
+ 
+  .dark-mode .dark-mode-toggle .fa-icon {
+    color: rgb(248, 124, 0);
+  }
+ 
+.nav-list.dark-mode{
+  background-color: black;
+}
+.nav-list.dark-mode a {
+
+  color:rgb(248, 124, 0);
+  
+}
