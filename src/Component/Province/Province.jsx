@@ -8,7 +8,7 @@ import Loader from "../Loader/Loader";
 import ErrorPage from '../Error/Error';
 import DataDisplay from '../DataDisplay/DataDisplay';
 
-function ProvincePage() {
+function ProvincePage(isDarkMode) {
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedProvince, setSelectedProvince] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -175,7 +175,9 @@ function ProvincePage() {
 
   return (
     <div className='tend'>
-      <h1 className='tit-pg' >Province</h1>
+      <h1 className={`tit-pga ${isDarkMode ? 'dark-mode' : ''}`}>Province</h1>
+
+      
       <select className="custom-select-P" onChange={handleRegionChange}>
         <option value="">Seleziona una regione</option>
         {regioni.map((regione, index) => (

@@ -113,7 +113,7 @@ margin-top: 100px;
   height: 100vh;
   text-align: center;
   padding: 20px; /* Aggiungi spaziatura uniforme su tutti i lati */
-  box-sizing: border-box; /* Assicurati che il padding sia incluso nelle dimensioni totali */
+  box-sizing: border-box; 
 }
 
 .tit {

@@ -8,7 +8,7 @@ import ErrorPage from '../Error/Error';
 import Loader from "../Loader/Loader";
 import  DataDisplay from "../DataDisplay/DataDisplay";
 
-function RegionPage() {
+function RegionPage({isDarkMode}) {
   const [selectedRegion, setSelectedRegion] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [chartType, setChartType] = useState('bar');
@@ -59,7 +59,7 @@ function RegionPage() {
 
   return (
     <div>
-      <h1 className='tit-pg'>Regioni</h1>
+      <h1 className={`tit-pga ${isDarkMode ? 'dark-mode' : ''}`}>Regioni</h1>
       <select
         value={selectedRegion}
         onChange={handleRegionChange}

@@ -12,7 +12,7 @@ import DataDisplay from '../DataDisplay/DataDisplay';
 import  './style.css';
 
 
-function AndamentoPage() {
+function AndamentoPage(isDarkMode) {
   const [selectedData, setSelectedData] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const chartData = useChartData(selectedData);
@@ -49,7 +49,9 @@ function AndamentoPage() {
 
   return (
     <div>
-      <h1 className='tit-pga'>Andamento</h1>
+        <h1 className={`tit-pga ${isDarkMode ? 'dark-mode' : ''}`}>Andamento</h1>
+
+
       
 
       {isLoading ? (
