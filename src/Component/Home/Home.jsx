@@ -19,7 +19,6 @@ function HomePage({ isDarkMode }) { // Accedi a isDarkMode come prop..
       </Helmet>
 
       <div className="img-cont">
-        <img className="img-cov" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/COVID-19-outbreak-timeline.gif/800px-COVID-19-outbreak-timeline.gif" alt="map covid" />
       </div>
       <h3 className={`descr ${isDarkMode ? "dark-mode" : ""}`}>Benvenuti in Covid Tracker, una Web App che riporta i dati utili per il tracciamento dei casi di COVID in Italia.</h3>
       <footer className={`footer ${isDarkMode ? "dark-mode" : ""}`}>Daniele Camodeca-®Copyright</footer>
