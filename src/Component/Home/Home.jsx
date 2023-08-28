@@ -12,9 +12,9 @@ function HomePage({ isDarkMode }) { // Accedi a isDarkMode come prop
       <Helmet>
         <title>Covid Tracker</title>
         <meta name="description" content="Web App per tracking Covid" />
-        <meta property="og:image" content="/src/assets/img/cov-img meta.png"/>
+        <meta property="og:image" content="https://covid-tracker-magiko87.vercel.app/src/assets/img/cov-img-meta.png"/>
         <meta property="og:url" content="https://covid-tracker-magiko87.vercel.app/"/>
-        <meta property="og:type" content="CovidTracker web app"/>
+        <meta property="og:type" content="Web App"/>
         <meta property="og:site_name" content="Covid Tracker"/>
       </Helmet>
 
