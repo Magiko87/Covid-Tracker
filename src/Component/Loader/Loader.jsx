@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import './loader.css'; // Importa il file CSS
+import styles from "../Loader/loader.css";
 
 const Loader = () => {
   return (

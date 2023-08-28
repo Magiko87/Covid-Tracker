@@ -1,5 +1,8 @@
+//====>FOURH CHART DATA
+
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { Doughnut } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 import axios from 'axios';
 import Loader from "../Loader/Loader";
 
@@ -65,7 +68,7 @@ function FourthChart() {
       ) : (
         <div className="chart-container-torta">
           <h4>TOTALE CASI: {Totalcasi}</h4>
-          <Doughnut
+          <Pie
             data={chartData}
             options={chartOptions}
           />

@@ -1,151 +1,90 @@
+//====>PROVINCE PAGE
+
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
-import useChartData from "../Province/UseChartData";
-import "../Province/province.css";
-import Loader from "../Loader/Loader";
+import useChartData from "./UseChartData";
+import "./prrovince.css";
 import ErrorPage from '../Error/Error';
-import DataDisplay from '../DataDisplay/DataDisplay';
+import Loader from "../Loader/Loader";
+import DataDisplay from "../DataDisplay/DataDisplay";
+import axios from 'axios';
 
-function ProvincePage() {
+function ProvincePage({ isDarkMode }) {
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedProvince, setSelectedProvince] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [chartType, setChartType] = useState('bar');
+  const [tableData, setTableData] = useState([]);
   const [hasError, setHasError] = useState(false);
-  const chartData = useChartData(selectedRegion, selectedProvince);
-  
+  const [filteredProvinces, setFilteredProvinces] = useState([]);
+  const [chartData, setChartData] = useState({
+    regions: [],
+    provinces: [],
+  });
 
-
-  const regioni = [
-    {
-      nome: 'Abruzzo',
-      province: ["L'Aquila", 'Chieti', 'Pescara', 'Teramo']
-    },
-    {
-      nome: 'Basilicata',
-      province: ['Matera', 'Potenza']
-    },
-    {
-      nome: 'Calabria',
-      province: ['Catanzaro', 'Cosenza', 'Crotone', 'Reggio Calabria','Vibo Valentia']
-    },
-    {
-      nome: 'Campania',
-      province: ['Avellino', 'Benevento', 'Caserta', 'Napoli','Salerno']
-    },
-    {
-      nome: 'Emilia-Romagna',
-      province: ['Bologna', 'Ferrara', 'Forli-Cesena', 'Modena','Parma','Piacenza','Ravenna','Reggio Emilia','Rimini']
-    },
-    
-    {
-      nome: 'Friuli Venezia Giulia',
-      province: ['Gorizia', 'Pordenone', 'Trieste', 'Udine']
-    },
-    {
-      nome: 'Lazio',
-      province: ['Frosinone', 'Latina', 'Rieti', 'Roma','Viterbo']
-    },
-    {
-      nome: 'Liguria',
-      province: ['Genova', 'Imperia', 'La Spezia', 'Savona']
-    },
-    
-    {
-      nome: 'Lombardia',
-      province: ['Bergamo', 'Brescia', 'Como', 'Cremona','Lecco','Lodi','Mantova','Milano','Pavia','Sondrio','Varese']
-    },
-    {
-      nome: 'Marche',
-      province: ['Ancona', 'Ascoli Piceno', 'Fermo', 'Macerata','Pesaro-Urbino']
-    },
-    
-    {
-      nome: 'Molise',
-      province: ['Campobasso', 'Isernia']
-    },
-    {
-      nome: 'Piemonte',
-      province: ['Alessandria', 'Asti', 'Biella', 'Cuneo','Novara','Torino','Verbano','Vercelli']
-    },
-    {
-      nome: 'Puglia',
-      province: ['Bari', 'Brindisi', 'Foggia', 'Lecce','Taranto']
-    },
-    
-    {
-      nome: 'Sardegna',
-      province: ['Cagliari', 'Carbona-Iglesias', 'Medio Campidano', 'Nuoro','Ogliastra','Olbia','Oristano','Sassari']
-    },
-    
-    {
-      nome: 'Sicilia',
-      province: ['Agrigento', 'Caltanissetta', 'Catania', 'Enna','Messina','Palermo','Ragusa','Siracusa','Trapani']
-    },
-    
-    {
-      nome: 'Toscana',
-      province: ['Arezzo', 'Firenze', 'Grosseto', 'Livorno','Lucca','Massa-Carrara','Pisa','Pistoia','Prato','Siena']
-    },
-    
-    {
-      nome: 'P.A. Bolzano',
-      province: ['Bolzano']
-    },
-    
-    {
-      nome: 'P.A. Trento',
-      province: [ 'Trento']
-    },
-    
-    {
-      nome: 'Umbria',
-      province: ['Perugia','Terni']
-    },
-    {
-      nome: 'Veneto',
-      province: ['Belluno', 'Padova', 'Rovigo', 'Treviso','Venezia','Verona','Vicenza'],
-    },
-    
-  ];
-  
-  // Aggiungi uno stato per le province in base alla regione selezionata
-  const [provinceOptions, setProvinceOptions] = useState([]);
+  const { regions, provinces } = useChartData(selectedRegion, selectedProvince, setTableData);
 
   useEffect(() => {
-    if (chartData.labels && chartData.datasets) {
+    axios
+      .get('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province-latest.json')
+      .then((response) => {
+        const data = response.data;
+        const uniqueRegions = [...new Set(data.map((item) => item.denominazione_regione))];
+
+        setChartData({
+          regions: uniqueRegions,
+          provinces: data,
+        });
+      })
+      .catch((error) => {
+        console.error('Errore nella richiesta API:', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (selectedRegion) {
+      // Se è selezionata solo la regione, mostra tutte le province di quella regione
+      const filteredProvinces = chartData.provinces.filter((province) => province.denominazione_regione === selectedRegion);
+      
+      // Rimuovi le ultime due province dalla lista
+      const slicedProvinces = filteredProvinces.slice(0, filteredProvinces.length - 2);
+      
+      setFilteredProvinces(slicedProvinces);
+      setIsLoading(false);
+      setHasError(false);
+    } else {
+      // Quando la regione non è selezionata, mostra solo il messaggio "Seleziona una regione"
       setIsLoading(false);
     }
-  }, [chartData]);
+  }, [selectedRegion, chartData.provinces]);
+
+  useEffect(() => {
+    if (tableData.length > 0) {
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
+    }
+  }, [tableData]);
 
   const handleRegionChange = (e) => {
-   
-    const region = e.target.value;
-
-    // Aggiorna le opzioni delle province in base alla regione selezionata
-    const selectedRegionData = regioni.find((r) => r.nome === region);
-    if (selectedRegionData) {
-      setSelectedRegion(region);
-      setSelectedProvince(''); // Azzera la provincia quando cambia la regione
-      setProvinceOptions(selectedRegionData.province);
-    } else {
-      setSelectedRegion('');
-      setSelectedProvince('');
-      setProvinceOptions([]);
-    }
-
-  
+    setSelectedRegion(e.target.value);
+    setSelectedProvince('');
+    setChartType('bar');
+    setIsLoading(true);
   };
 
-
   const handleProvinceChange = (e) => {
-    const province = e.target.value;
-    setSelectedProvince(province);
+    setSelectedProvince(e.target.value);
+    setChartType('bar');
     setIsLoading(true);
     setHasError(false);
   };
 
   const chartOptions = {
+    
     scales: {
       x: {
         ticks: {
@@ -157,64 +96,108 @@ function ProvincePage() {
           color: 'black',
         },
         beginAtZero: true,
+        callback: function (value) {
+          
+          return value.toLocaleString();
+        },
       },
     },
     plugins: {
       legend: {
         labels: {
-          color: '',
+          color: 'black',
         },
       },
     },
-    barThickness:15,
+    
+    barThickness: 15,
     indexAxis: 'y',
-    maintainAspectRatio: false, 
-    height: 100,
+    maintainAspectRatio: false,
+    height: 400,
   };
 
+  let chartDataObject = {};
+
+  if (selectedRegion && selectedProvince) {
+    
+    const selectedProvinceData = chartData.provinces.find(
+      (province) => province.denominazione_regione === selectedRegion && province.denominazione_provincia === selectedProvince
+    );
+
+    const chartDataObject = {
+      datasets: [
+        {
+          label: 'Totale Casi',
+          data: filteredProvinces.map((province) => province.totale_casi),
+          borderWidth: 1,
+        },
+      ],
+    };
+  } else if (selectedRegion) {
+   
+     chartDataObject = {
+      labels: filteredProvinces.map((province) => province.denominazione_provincia),
+      datasets: [
+        {
+          label: 'Totale Casi',
+          data: filteredProvinces.map((province) => province.totale_casi),
+          backgroundColor: 'rgb(255, 255, 0)',
+  
+        },
+      ],
+    };
+  }
+
   return (
-    <div className='tend'>
-      <h1 className='tit-pg' >Province</h1>
-      <select className="custom-select-P" onChange={handleRegionChange}>
+    <div>
+      <h1 className={`tit-pga ${isDarkMode ? 'dark-mode' : ''}`}>Province</h1>
+      <select
+        value={selectedRegion}
+        onChange={handleRegionChange}
+        className="custom-select-P"
+      >
         <option value="">Seleziona una regione</option>
-        {regioni.map((regione, index) => (
-          <option key={index} value={regione.nome}>
-            {regione.nome}
+        {regions.map((region, index) => (
+          <option className="tend" key={index} value={region}>
+            {region}
           </option>
         ))}
       </select>
-      <div className="divider"></div>
-
-      {selectedRegion !== '' && (
-        <select
-          value={selectedProvince}
-          onChange={handleProvinceChange}
-          className="custom-select-P"
-        >
-          <option value="">Seleziona una provincia</option>
-          {provinceOptions.map((province, index) => (
-            <option key={index} value={province}>
-              {province}
-            </option>
-          ))}
-        </select>
-      )}
 
       {isLoading ? (
         <Loader />
-      ) : hasError ? ( 
+      ) : hasError ? (
         <ErrorPage />
-      ) : (
-        chartData.labels && chartData.datasets && (
-         <div className="chart-container-P">
+      ) : selectedRegion ? (
+        <div className="chart-container-P">
           <Bar
-            data={chartData}
+            data={chartDataObject}
             options={chartOptions}
-            
+            width={400}
           />
         </div>
-        )
-      )}
+      ) : null}
+
+      {selectedRegion ? (
+        <div className="table-container">
+          <table className="my-table">
+            <thead>
+              <tr>
+                <th>Provincia</th>
+                <th>Totale Casi</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredProvinces.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.denominazione_provincia}</td>
+                  <td>{item.totale_casi.toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : null}
       <DataDisplay />
     </div>
   );

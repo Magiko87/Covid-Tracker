@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loader from '../Loader/Loader';
 import { format } from 'date-fns';
 
 
-function DataDisplay() {
+function DataDisplay(isDarkMode) {
   const [data1, setData1] = useState({});
   const [data2, setData2] = useState({});
   const [data3, setData3] = useState({});
@@ -39,7 +40,7 @@ function DataDisplay() {
         <Loader />
       ) : (
         <div>
-           <h className="data-s">Dati aggiornati al {format(new Date(data1[0].data), 'dd MMMM yyyy')}</h>
+           <h6 className={`data-s ${isDarkMode ? 'dark-mode' : ''}`}>Dati aggiornati al {format(new Date(data1[0].data), 'dd MMMM yyyy')}</h6>
 
         </div>
       )}

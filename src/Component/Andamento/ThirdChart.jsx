@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+//====>THIRD CHART DATA
+
 import React, { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import axios from 'axios';

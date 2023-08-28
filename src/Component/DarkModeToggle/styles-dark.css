@@ -1,0 +1,38 @@
+/* Stili per la modalità Dark */
+
+/* --->Navbar */
+.navbar.dark-mode {
+  
+  background-color: rgb(0, 0, 0);
+  
+  .nav-list.dark-mode{
+    background-color: black;
+  }
+  }
+  .bar.dark-mode{
+    background-color: rgb(248, 126, 3);
+  }
+ 
+  .dark-mode .dark-mode-toggle .fa-icon {
+    color: rgb(248, 124, 0);
+  }
+ 
+.nav-list.dark-mode a {
+
+  color:rgb(248, 124, 0);
+  
+}
+.nav-list.dark-mode a,
+ .tit.dark-mode,
+ .dark-mode .tit-pga,
+ .dark-mode .data-s,
+ .descr.dark-mode,
+ .footer.dark-mode  {
+  color:rgb(248, 124, 0);
+  
+}
+
+
+
+
+
