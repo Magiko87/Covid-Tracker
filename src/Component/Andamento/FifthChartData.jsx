@@ -1,26 +1,9 @@
-/* eslint-disable no-unused-vars */
-//====>FIFTH CHART DATA
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Line } from "react-chartjs-2";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 const FifthChart = () => {
-  // Stato per memorizzare i dati ottenuti dall'API
-  const [chartData, setChartData] = useState({
-    labels: [],
-    datasets: [
-      {
-        borderWidth:1,
-        label: "Nuovi Positivi",
-        fill: false,
-        lineTension: 0.4,
-        backgroundColor: "red",
-        borderColor: "red",
-        data: [], 
-      },
-    ],
-  });
+  const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
     // Effettua la richiesta HTTP per ottenere i dati dall'API
@@ -30,57 +13,39 @@ const FifthChart = () => {
         // Estrai i dati di interesse dalla risposta
         const newData = response.data.map((entry) => ({
           date: new Date(entry.data).toLocaleDateString(),
-          totalPositive: entry.nuovi_positivi,
+          Totale_Positivi: entry.nuovi_positivi,
         }));
 
         // Aggiorna lo stato con i nuovi dati
-        setChartData((prevChartData) => ({
-          ...prevChartData,
-          labels: newData.map((entry) => entry.date),
-          datasets: [
-            {
-              ...prevChartData.datasets[0],
-              data: newData.map((entry) => entry.totalPositive),
-            },
-          ],
-        }));
+        setChartData(newData);
       })
       .catch((error) => {
         console.error("Errore nella richiesta API:", error);
       });
   }, []);
 
-
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        labels: {
-          color: 'black', 
-          borderColor:"white",
-        },
-      },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        ticks: {
-          color: "black", 
-        },
-      },
-      x: {
-        ticks:{
-          color: "black", 
-        }
-      }
-    },
-  };
-  
-
   return (
     <div className="chart-container-torta">
       <h2>Nuovi Positivi</h2>
-      <Line data={chartData} options={options} />
+      <LineChart width={400} height={200} data={chartData}>
+        <XAxis
+          dataKey="date"
+          tick={{ fill: "black", fontSize: 12 }} // Imposta il colore delle etichette sull'asse X su "black"
+        />
+        <YAxis
+          label={{ value: '' }}
+          tick={{ fill: "black", fontSize: 12 }} // Imposta il colore delle etichette sull'asse Y su "black"
+        />
+        <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
+        <Tooltip />
+        <Legend />
+        <Line
+          type="monotone"
+          dataKey="Totale_Positivi"
+          stroke="red"
+          strokeWidth={1}
+        />
+      </LineChart>
     </div>
   );
 };
