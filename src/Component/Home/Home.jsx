@@ -1,5 +1,7 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React from "react";
-import '../Home/home.css'; // Assicurati di importare i tuoi stili CSS
+import '../Home/hoome.css'; // Assicurati di importare i tuoi stili CSS
 
 function HomePage({ isDarkMode }) { // Accedi a isDarkMode come prop
   return (
