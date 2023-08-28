@@ -1,5 +1,5 @@
 import React from "react";
-import '../Home/Home.css'; // Assicurati di importare i tuoi stili CSS
+import '../Home/home.css'; // Assicurati di importare i tuoi stili CSS
 
 function HomePage({ isDarkMode }) { // Accedi a isDarkMode come prop
   return (

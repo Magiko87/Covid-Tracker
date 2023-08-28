@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
 import useChartData from "./UseChartData";
-import "./Province.css";
+import "./province.css";
 import ErrorPage from '../Error/Error';
 import Loader from "../Loader/Loader";
 import DataDisplay from "../DataDisplay/DataDisplay";

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import './Navbar.css';
+import './navbar.css';
 import { Link } from 'react-router-dom';
 import routes from '../Routes/Routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

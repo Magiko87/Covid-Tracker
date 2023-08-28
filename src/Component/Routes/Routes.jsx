@@ -8,7 +8,7 @@ const routes = [
   { path: "/", element: <HomePage />, name: "Home" },
   { path: "/regioni", element: <RegionPage />, name: "Regioni" },
   { path: "/province", element: <ProvincePage />, name: "Province" },
-  { path: "/andamento", element: <AndamentoPage />, name: "Andamento" },
+  { path: "/andaments", element: <AndamentoPage />, name: "Andamento" },
 ];
 
 export default routes;
