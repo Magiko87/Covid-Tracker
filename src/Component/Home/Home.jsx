@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars*/
 import React from "react";
 import '../Home/hoome.css';
 import {Helmet} from "react-helmet";
 
 
-function HomePage({ isDarkMode }) { // Accedi a isDarkMode come prop
+function HomePage({ isDarkMode }) { // Accedi a isDarkMode come prop.
   return (
     <div className={`home-container ${isDarkMode ? "dark-mode" : ""}`}>
       <h1 className={`tit ${isDarkMode ? 'dark-mode' : ''}`}>COVID TRACKER</h1>
