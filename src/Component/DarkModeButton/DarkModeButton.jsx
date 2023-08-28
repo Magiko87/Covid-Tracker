@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
-import "./DarkMode.css"
+import "./darkMode.css"
 
 function DarkModeButton(props) {
   const { isDarkMode, toggleDarkMode } = props;

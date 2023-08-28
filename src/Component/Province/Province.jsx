@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
 import useChartData from "../Province/UseChartData";
-import "../Province/Province.css";
+import "../Province/province.css";
 import Loader from "../Loader/Loader";
 import ErrorPage from '../Error/Error';
 import DataDisplay from '../DataDisplay/DataDisplay';
