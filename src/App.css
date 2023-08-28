@@ -27,19 +27,7 @@ margin-top: 100px;
     min-height: 100vh; 
   }
 
-  /* RegionPage */
-  .my-table {
-    font-size: 12px;
-
-      max-width: 100px;
-      border-collapse: collapse;
-      margin-top: 80px;
-      box-shadow: 5px 5px rgba(0, 0, 0, 0.454);
-      border :3px solid rgb(0, 0, 0);
-      background-color: rgb(182, 222, 236);
-      
-  }
-
+  /* --->RegionPage */
 .custom-select-R{
   
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -64,7 +52,7 @@ margin-top: 100px;
     background-color: rgb(182, 222, 236);
     overflow-y: auto;
   }
-  /* ProvincePage */
+  /* --->ProvincePage */
   .chart-container-P {
     box-shadow: 5px 5px rgba(0, 0, 0, 0.571);
   width: 300px; 
@@ -89,7 +77,9 @@ margin-top: 100px;
    
     box-shadow: 5px 5px rgba(0, 0, 0, 0.454);
   }
-  /* AndamentiPage */
+ 
+
+  /* ---> AndamentiPage */
   .chart-container-torta {
     position: relative;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -104,7 +94,7 @@ margin-top: 100px;
 
   
 
-/* HomePage */
+/* --->HomePage */
 .home-container {
   display: flex;
   flex-direction: column;
@@ -150,7 +140,7 @@ footer {
 
 
 
-  /* Comune */
+  /* --->Comune */
   .tit-pga{
     display: flex;
     font-size: 50px;
@@ -162,5 +152,18 @@ footer {
     margin-bottom: 50px;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.524);
   
-  }
+  }  
+  .my-table {
+       font-size: 12px;
+        max-width: 100px;
+        border-collapse: collapse;
+        margin: 0 auto; /* Imposta il margine laterale a "auto" per centrare orizzontalmente */
+        box-shadow: 5px 5px rgba(0, 0, 0, 0.454);
+        border: 3px solid rgb(0, 0, 0);
+        background-color: rgb(182, 222, 236);
+      }
+      .table-container {
+        margin-top: 20px; /* Aggiunge uno spazio di 20px tra il grafico e la tabella superiore */
+      }
+      
 }

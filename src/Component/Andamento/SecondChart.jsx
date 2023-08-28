@@ -1,6 +1,8 @@
+//====>SECOND CHART DATA
+
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { Doughnut } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 import axios from 'axios';
 import Loader from "../Loader/Loader";
 function SecondChart() {
@@ -69,7 +71,7 @@ function SecondChart() {
       ) : (
         <div className="chart-container-torta">
           <h4>TOTALE TAMPONI: {totalTamponi}</h4>
-          <Doughnut
+          <Pie
             data={chartData}
             options={chartOptions}
           />

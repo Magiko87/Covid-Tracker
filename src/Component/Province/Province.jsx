@@ -1,3 +1,5 @@
+//====>PROVINCE PAGE
+
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
@@ -82,6 +84,7 @@ function ProvincePage({ isDarkMode }) {
   };
 
   const chartOptions = {
+    
     scales: {
       x: {
         ticks: {
@@ -94,7 +97,7 @@ function ProvincePage({ isDarkMode }) {
         },
         beginAtZero: true,
         callback: function (value) {
-          // Aggiungi il punto ogni tre cifre nei numeri
+          
           return value.toLocaleString();
         },
       },
@@ -106,6 +109,7 @@ function ProvincePage({ isDarkMode }) {
         },
       },
     },
+    
     barThickness: 15,
     indexAxis: 'y',
     maintainAspectRatio: false,
@@ -115,34 +119,30 @@ function ProvincePage({ isDarkMode }) {
   let chartDataObject = {};
 
   if (selectedRegion && selectedProvince) {
-    // Se è selezionata sia la regione che la provincia, mostra solo quella provincia
+    
     const selectedProvinceData = chartData.provinces.find(
       (province) => province.denominazione_regione === selectedRegion && province.denominazione_provincia === selectedProvince
     );
 
-    chartDataObject = {
-      labels: [selectedProvinceData.denominazione_provincia],
+    const chartDataObject = {
       datasets: [
         {
           label: 'Totale Casi',
-          data: [selectedProvinceData.totale_casi],
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderColor: 'rgba(75, 192, 192, 1)',
+          data: filteredProvinces.map((province) => province.totale_casi),
           borderWidth: 1,
         },
       ],
     };
   } else if (selectedRegion) {
-    // Se è selezionata solo la regione, mostra tutte le province di quella regione
-    chartDataObject = {
+   
+     chartDataObject = {
       labels: filteredProvinces.map((province) => province.denominazione_provincia),
       datasets: [
         {
           label: 'Totale Casi',
           data: filteredProvinces.map((province) => province.totale_casi),
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 1,
+          backgroundColor: 'rgb(255, 255, 0)',
+  
         },
       ],
     };

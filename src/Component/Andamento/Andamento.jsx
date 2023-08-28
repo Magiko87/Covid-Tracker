@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2'; 
 import 'chart.js/auto';
@@ -7,12 +6,13 @@ import SecondChart from './SecondChart';
 import ThirdChart from './ThirdChart';
 import ErrorPage from "../Error/Error"
 import FourthChart from './FourhChartData';
+import FifthChart from "./FifthChartData";
 import Loader from "../Loader/Loader";
 import DataDisplay from '../DataDisplay/DataDisplay';
-import  './style.css';
+import "../Andamento/style.css";
 
 
-function AndamentoPage(isDarkMode) {
+function AndamentoPage() {
   const [selectedData, setSelectedData] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const chartData = useChartData(selectedData);
@@ -49,9 +49,7 @@ function AndamentoPage(isDarkMode) {
 
   return (
     <div>
-        <h1 className={`tit-pga ${isDarkMode ? 'dark-mode' : ''}`}>Andamento</h1>
-
-
+      <h1 className='tit-pga'>Andamento</h1>
       
 
       {isLoading ? (
@@ -72,6 +70,7 @@ function AndamentoPage(isDarkMode) {
        <SecondChart />
        <ThirdChart />
        <FourthChart />
+       <FifthChart />
        <DataDisplay />
     </div>
   );
