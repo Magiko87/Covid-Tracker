@@ -7,6 +7,9 @@ import  "../Region/reegion.css";
 import ErrorPage from '../Error/Error';
 import Loader from "../Loader/Loader";
 import  DataDisplay from "../DataDisplay/DataDisplay";
+import { Helmet } from "react-helmet";
+
+
 
 function RegionPage({isDarkMode}) {
   const [selectedRegion, setSelectedRegion] = useState('');
@@ -60,6 +63,10 @@ function RegionPage({isDarkMode}) {
   return (
     <div>
       <h1 className={`tit-pga ${isDarkMode ? 'dark-mode' : ''}`}>Regioni</h1>
+      <Helmet>
+        <title>Regioni</title>
+        <meta name="description" content="Pagina Regioni" />
+      </Helmet>
       <select
         value={selectedRegion}
         onChange={handleRegionChange}

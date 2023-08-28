@@ -11,6 +11,7 @@ import ErrorPage from '../Error/Error';
 import Loader from "../Loader/Loader";
 import DataDisplay from "../DataDisplay/DataDisplay";
 import axios from 'axios';
+import { Helmet } from "react-helmet";
 
 function ProvincePage({ isDarkMode }) {
   const [selectedRegion, setSelectedRegion] = useState('');
@@ -151,6 +152,10 @@ function ProvincePage({ isDarkMode }) {
   return (
     <div>
       <h1 className={`tit-pga ${isDarkMode ? 'dark-mode' : ''}`}>Province</h1>
+      <Helmet>
+        <title>Province</title>
+        <meta name="description" content="Pagina Province" />
+      </Helmet>
       <select
         value={selectedRegion}
         onChange={handleRegionChange}

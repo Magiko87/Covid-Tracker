@@ -11,7 +11,7 @@ import FifthChart from "./FifthChartData";
 import Loader from "../Loader/Loader";
 import DataDisplay from '../DataDisplay/DataDisplay';
 import "../Andamento/style.css";
-
+import { Helmet } from "react-helmet";
 
 function AndamentoPage() {
   const [selectedData, setSelectedData] = useState('');
@@ -51,8 +51,10 @@ function AndamentoPage() {
   return (
     <div>
       <h1 className='tit-pga'>Andamento</h1>
-      
-
+      <Helmet>
+        <title>Andamento</title>
+        <meta name="description" content="Pagina Andamento" />
+      </Helmet>
       {isLoading ? (
         <Loader />
         ) : hasError ? ( 
