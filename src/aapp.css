@@ -7,7 +7,7 @@
 
 footer{
 font-weight: 700;
-margin-top: 100px;
+margin-top: 10px;
 }
 @media only screen and (max-width: 768px) {
   body {
@@ -163,4 +163,26 @@ footer {
         margin-top: 20px; 
       
 }
+@media (max-width: 320px) {
+  .home-container {
+    height: auto;
+    padding-top: 20px; /* Modifica il padding superiore */
+    padding-bottom: 110px; /* Mantieni il padding inferiore */
+    position: relative;
   }
+
+  .tit-h {
+    margin-top: 110;
+    margin-bottom: 20px; /* Aggiunto margine inferiore */
+  }
+
+  .descr {
+    margin-bottom: 20px; /* Aggiunto margine inferiore */
+  }
+
+  footer {
+    position: relative;
+    margin-top: 40px; /* Aumentato margine superiore per separarlo dal contenuto */
+    width: 100%;
+  }
+}
