@@ -1,11 +1,27 @@
-//====>FIFTH CHART DATA
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import { Line } from "react-chartjs-2";
 
 const FifthChart = () => {
-  const [chartData, setChartData] = useState([]);
+  // Stato per memorizzare i dati ottenuti dall'API
+  const [chartData, setChartData] = useState({
+    labels: [],
+    datasets: [
+      {
+        label: "Nuovi Positivi",
+        fill: true, // Riempie l'area sotto la linea con il gradiente
+        lineTension: 0.1,
+        backgroundColor: "rgba(75,192,192,0.4)",
+        borderColor: "rgba(255, 99, 132, 1)",
+        borderWidth: 1,
+        pointStyle: "circle",
+        pointRadius: 5,
+        pointBorderColor: "rgba(255, 99, 132, 1)",
+        pointBackgroundColor: "#fff",
+        
+      },
+    ],
+  });
 
   useEffect(() => {
     // Effettua la richiesta HTTP per ottenere i dati dall'API
@@ -15,11 +31,20 @@ const FifthChart = () => {
         // Estrai i dati di interesse dalla risposta
         const newData = response.data.map((entry) => ({
           date: new Date(entry.data).toLocaleDateString(),
-          Totale_Positivi: entry.nuovi_positivi,
+          totalPositive: entry.nuovi_positivi,
         }));
 
         // Aggiorna lo stato con i nuovi dati
-        setChartData(newData);
+        setChartData((prevChartData) => ({
+          ...prevChartData,
+          labels: newData.map((entry) => entry.date),
+          datasets: [
+            {
+              ...prevChartData.datasets[0],
+              data: newData.map((entry) => entry.totalPositive),
+            },
+          ],
+        }));
       })
       .catch((error) => {
         console.error("Errore nella richiesta API:", error);
@@ -27,27 +52,9 @@ const FifthChart = () => {
   }, []);
 
   return (
-    <div className="chart-container-torta">
+    <div>
       <h2>Nuovi Positivi</h2>
-      <LineChart width={400} height={200} data={chartData}>
-        <XAxis
-          dataKey="date"
-          tick={{ fill: "black", fontSize: 12 }} // Imposta il colore delle etichette sull'asse X su "black"
-        />
-        <YAxis
-          label={{ value: '' }}
-          tick={{ fill: "black", fontSize: 12 }} // Imposta il colore delle etichette sull'asse Y su "black"
-        />
-        <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-        <Tooltip />
-        <Legend />
-        <Line
-          type="monotone"
-          dataKey="Totale_Positivi"
-          stroke="red"
-          strokeWidth={1}
-        />
-      </LineChart>
+      <Line data={chartData} />
     </div>
   );
 };
