@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loader from '../Loader/Loader';
 import { format } from 'date-fns';
+import "./dataDisplay.css";
 
 
 function DataDisplay(isDarkMode) {
@@ -40,7 +41,7 @@ function DataDisplay(isDarkMode) {
         <Loader />
       ) : (
         <div>
-           <h6 className={`data-s ${isDarkMode ? 'dark-mode' : ''}`}>Dati aggiornati al {format(new Date(data1[0].data), 'dd MMMM yyyy')}</h6>
+           <h6 className={`data-s ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>Dati aggiornati al {format(new Date(data1[0].data), 'dd MMMM yyyy')}</h6>
 
         </div>
       )}

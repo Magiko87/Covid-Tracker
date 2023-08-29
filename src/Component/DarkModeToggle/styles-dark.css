@@ -1,5 +1,8 @@
 /* Stili per la modalità Dark */
-
+.dark-mode {
+  background: rgb(39, 38, 38);
+ 
+}
 /* --->Navbar */
 .navbar.dark-mode {
   
@@ -25,14 +28,9 @@
 .nav-list.dark-mode a,
  .tit.dark-mode,
  .dark-mode .tit-pga,
- .dark-mode .data-s,
  .descr.dark-mode,
+ .dark-mode .data-s,
  .footer.dark-mode  {
   color:rgb(248, 124, 0);
   
 }
-
-
-
-
-
