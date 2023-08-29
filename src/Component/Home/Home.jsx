@@ -20,7 +20,9 @@ function HomePage({ isDarkMode }) {
         />
       </div>
       <h3 className={`descr ${darkModeClass}`}>
-        Benvenuti in Covid Tracker, una Web App che riporta i dati aggiornati sulle regioni, le province e l andamento nazionale della pandemia.
+        Benvenuti in Covid Tracker, una Web App che riporta i dati aggiornati sulle regioni, le province e l&apos;andamento
+
+ nazionale della pandemia.
       </h3>
       <footer className={`footer ${darkModeClass}`}>Daniele Camodeca-®Copyright</footer>
     </div>
