@@ -52,9 +52,9 @@ const FifthChart = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Nuovi Positivi</h2>
-      <Line data={chartData} />
+    <div className="chart-container-torta">
+      <h2 >Nuovi Positivi</h2>
+      <Line  data={chartData} />
     </div>
   );
 };
