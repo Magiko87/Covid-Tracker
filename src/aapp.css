@@ -154,14 +154,13 @@ footer {
        font-size: 12px;
         max-width: 100px;
         border-collapse: collapse;
-        margin: 0 auto; /* Imposta il margine laterale a "auto" per centrare orizzontalmente */
+        margin: 0 auto; 
         box-shadow: 5px 5px rgba(0, 0, 0, 0.454);
         border: 3px solid rgb(0, 0, 0);
         background-color: rgb(182, 222, 236);
       }
       .table-container {
-        margin-top: 20px; /* Aggiunge uno spazio di 20px tra il grafico e la tabella superiore */
-      }
+        margin-top: 20px; 
       
 }
 

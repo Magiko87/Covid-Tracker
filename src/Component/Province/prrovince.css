@@ -1,5 +1,4 @@
 .page-container {
-  /* Altezza minima per far sì che il footer sia in fondo anche con poco contenuto */
   min-height: calc(100vh - 40px);
   position: relative;
 }
@@ -52,7 +51,7 @@ margin: 10px 0;
 
 .chart-container-P {
   box-shadow: 5px 5px rgba(0, 0, 0, 0.571);
-  height: 600px; /* Aumenta l'altezza in base alle tue esigenze */
+  height: 600px; 
   max-width: 600px;
   margin: 0 auto;
   margin-top: 50px;

@@ -53,7 +53,7 @@ color: black;
 
 .chart-container-R {
   box-shadow: 5px 5px rgba(0, 0, 0, 0.571);
-  height: 600px; /* Aumenta l'altezza in base alle tue esigenze */
+  height: 600px; 
   max-width: 600px;
   margin: 0 auto;
   margin-top: 50px;
