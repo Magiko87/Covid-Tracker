@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2'; 
 import 'chart.js/auto';
 import useChartData from "./FirstChartData" 
@@ -14,7 +13,7 @@ import "../Andamento/style.css";
 import { Helmet } from "react-helmet";
 
 function AndamentoPage() {
-  const [selectedData, setSelectedData] = useState('');
+  const [selectedData] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const chartData = useChartData(selectedData);
   const [totalSum, setTotalSum] = useState(0);

@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
+import 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +17,6 @@ function DarkModeButton(props) {
     </button>
   );
 }
-
 
 DarkModeButton.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,

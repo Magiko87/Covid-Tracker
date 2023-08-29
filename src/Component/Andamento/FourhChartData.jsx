@@ -1,7 +1,7 @@
 //====>FOURH CHART DATA
 
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+
+import  { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 import axios from 'axios';
 import Loader from "../Loader/Loader";

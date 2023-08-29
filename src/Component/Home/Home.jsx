@@ -1,15 +1,10 @@
-//====>PROVINCE PAGE
-
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars*/
-//--->IMPORT
-import React from "react";
+import 'react';
+import PropTypes from 'prop-types'; // Assicurati di importare PropTypes
 import '../Home/hoome.css';
-import {Helmet} from "react-helmet";
-
+import { Helmet } from 'react-helmet';
 
 function HomePage({ isDarkMode }) {
-  const darkModeClass = isDarkMode ? "dark-mode" : "";
+  const darkModeClass = isDarkMode ? 'dark-mode' : '';
 
   return (
     <div className={`home-container ${darkModeClass}`}>
@@ -25,10 +20,16 @@ function HomePage({ isDarkMode }) {
         />
       </div>
       <h3 className={`descr ${darkModeClass}`}>
-        Benvenuti in Covid Tracker, una Web App che riporta i dati aggiornati sulle regioni, le province e l'andamento nazionale della pandemia.
+        Benvenuti in Covid Tracker, una Web App che riporta i dati aggiornati sulle regioni, le province e l andamento nazionale della pandemia.
       </h3>
       <footer className={`footer ${darkModeClass}`}>Daniele Camodeca-®Copyright</footer>
     </div>
   );
 }
+
+// Dichiarazione dei PropTypes per HomePage
+HomePage.propTypes = {
+  isDarkMode: PropTypes.bool.isRequired,
+};
+
 export default HomePage;

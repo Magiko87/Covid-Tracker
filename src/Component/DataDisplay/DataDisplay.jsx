@@ -1,7 +1,7 @@
 //====>DATA DISPLAY
 
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loader from '../Loader/Loader';
 import { format } from 'date-fns';
@@ -10,23 +10,15 @@ import "./dataDisplay.css";
 
 function DataDisplay(isDarkMode) {
   const [data1, setData1] = useState({});
-  const [data2, setData2] = useState({});
-  const [data3, setData3] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
 
-         //--->Richieste asincrone per ottenere dati da diverse fonti
+         //--->Richiesta asincrona per ottenere la data
         const dataRegioni = await axios.get('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni-latest.json');
         setData1(dataRegioni.data);
-
-        const dataProvince = await axios.get('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province-latest.json');
-        setData2(dataProvince.data);
-
-        const dataAndamente = await axios.get('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale-latest.json');
-        setData3(dataAndamente.data);
 
         setIsLoading(false);
       } catch (error) {

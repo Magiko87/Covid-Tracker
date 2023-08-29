@@ -1,9 +1,8 @@
 //====>PROVINCE PAGE
 
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
+
 //--->IMPORT
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
 import useChartData from "./UseChartData";
@@ -15,12 +14,12 @@ import axios from 'axios';
 import { Helmet } from "react-helmet";
 import {darkModeClass} from "../DarkModeToggle/style";
 
-function ProvincePage({ isDarkMode }) {
+function ProvincePage() {
   //---Stati
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedProvince, setSelectedProvince] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [chartType, setChartType] = useState('bar');
+  const [ setChartType] = useState('bar');
   const [tableData, setTableData] = useState([]);
   const [hasError, setHasError] = useState(false);
   const [filteredProvinces, setFilteredProvinces] = useState([]);
@@ -29,7 +28,7 @@ function ProvincePage({ isDarkMode }) {
     provinces: [],
   });
 
-  const { regions, provinces } = useChartData(selectedRegion, selectedProvince, setTableData);
+  const { regions,  } = useChartData(selectedRegion, selectedProvince, setTableData);
 
   //--->CAll API che ottiene i dati delle provivince all'avvio
   useEffect(() => {
@@ -81,13 +80,7 @@ function ProvincePage({ isDarkMode }) {
     setChartType('bar');
     setIsLoading(true);
   };
-//---> Gestione per il cambio di provincia
-  const handleProvinceChange = (e) => {
-    setSelectedProvince(e.target.value);
-    setChartType('bar');
-    setIsLoading(true);
-    setHasError(false);
-  };
+
   //--->Opzioni del grafico
   const chartOptions = {
     
@@ -124,22 +117,7 @@ function ProvincePage({ isDarkMode }) {
 
   let chartDataObject = {};
 
-  if (selectedRegion && selectedProvince) {
-    
-    const selectedProvinceData = chartData.provinces.find(
-      (province) => province.denominazione_regione === selectedRegion && province.denominazione_provincia === selectedProvince
-    );
-
-    const chartDataObject = {
-      datasets: [
-        {
-          label: 'Totale Casi',
-          data: filteredProvinces.map((province) => province.totale_casi),
-          borderWidth: 1,
-        },
-      ],
-    };
-  } else if (selectedRegion) {
+  if (selectedRegion) {
    
      chartDataObject = {
       labels: filteredProvinces.map((province) => province.denominazione_provincia),

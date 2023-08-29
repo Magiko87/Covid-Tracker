@@ -1,6 +1,6 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
-import styles from "../Loader/loaader.css";
+
+import 'react';
+import "./loaader.css"
 import {darkModeClass} from "../DarkModeToggle/style";
 
 const Loader = ({ isDarkMode }) => {

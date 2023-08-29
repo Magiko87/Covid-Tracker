@@ -1,17 +1,13 @@
-//====>DARK MODE
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
+import {useState} from 'react';
+import {PropTypes} from 'prop-types'; // Assicurati di importare PropTypes
 
-import React, { useState } from 'react';
-import '../DarkModeToggle/styles-dark.css'; // Assicurati che il file CSS sia correttamente importato
+import '../DarkModeToggle/styles-dark.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
-const DarkModeToggle = ({ isDarkMode, toggleDarkMode }) => {
-  //--->Stato locale per gestire l'icona corrente
+const DarkModeToggle = ({ toggleDarkMode }) => {
   const [isSunIcon, setIsSunIcon] = useState(true);
 
-  //--->Funzione per cambiare l'icona e attivare/disattivare la modalità scura
   const handleToggle = () => {
     setIsSunIcon(!isSunIcon);
     toggleDarkMode();
@@ -22,6 +18,12 @@ const DarkModeToggle = ({ isDarkMode, toggleDarkMode }) => {
       <FontAwesomeIcon icon={isSunIcon ? faSun : faMoon} className='fa-icon'/>
     </button>
   );
+};
+
+// Dichiarazione dei PropTypes
+DarkModeToggle.propTypes = {
+
+  toggleDarkMode: PropTypes.func.isRequired,
 };
 
 export default DarkModeToggle;

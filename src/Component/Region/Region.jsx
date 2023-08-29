@@ -1,9 +1,8 @@
 //====>REGION PAGE
 
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
+
 //--->IMPORT
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
 import useRegionData from "../Region/UseChartData"; 
@@ -15,11 +14,11 @@ import { Helmet } from "react-helmet";
 import {darkModeClass} from "../DarkModeToggle/style";
 
 //--->Componente RegionPage
-function RegionPage({isDarkMode}) {
+function RegionPage() {
   //--->Stati
   const [selectedRegion, setSelectedRegion] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [chartType, setChartType] = useState('bar');
+  const  setChartType = useState('bar');
   const [tableData, setTableData] = useState([]);
   const [hasError, setHasError] = useState(false);
 
