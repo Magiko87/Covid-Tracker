@@ -166,23 +166,23 @@ footer {
 @media (max-width: 320px) {
   .home-container {
     height: auto;
-    padding-top: 20px; /* Modifica il padding superiore */
-    padding-bottom: 110px; /* Mantieni il padding inferiore */
+    padding-top: 20px; 
+    padding-bottom: 110px; 
     position: relative;
   }
 
   .tit-h {
     margin-top: 110;
-    margin-bottom: 20px; /* Aggiunto margine inferiore */
+    margin-bottom: 20px; 
   }
 
   .descr {
-    margin-bottom: 20px; /* Aggiunto margine inferiore */
+    margin-bottom: 20px; 
   }
 
   footer {
     position: relative;
-    margin-top: 40px; /* Aumentato margine superiore per separarlo dal contenuto */
+    margin-top: 40px; 
     width: 100%;
   }
 }
