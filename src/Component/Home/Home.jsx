@@ -25,7 +25,7 @@ function HomePage({ isDarkMode }) {
         />
       </div>
       <h3 className={`descr ${darkModeClass}`}>
-        Benvenuti in Covid Tracker, una Web App che riporta i dati utili per il tracciamento dei casi di COVID in Italia.
+        Benvenuti in Covid Tracker, una Web App che riporta i dati aggiornati sulle regioni, le province e l'andamento nazionale della pandemia.
       </h3>
       <footer className={`footer ${darkModeClass}`}>Daniele Camodeca-®Copyright</footer>
     </div>
