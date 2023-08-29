@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # Covid Tracker
 
 Covid Tracker è una Web App per il tracciamento dei casi di COVID in Italia. Fornisce dati aggiornati sulle regioni, le province e l'andamento nazionale della pandemia.
@@ -46,4 +44,3 @@ Questo progetto è concesso in licenza secondo i termini della Licenza MIT.
 ---
 
 *Questo progetto è stato creato come esempio didattico.*
->>>>>>> f6aab96c23484ec325edc772b8e727c3c254416c
