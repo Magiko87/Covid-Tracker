@@ -29,6 +29,7 @@
  .tit.dark-mode,
  .dark-mode .tit-pga,
  .descr.dark-mode,
+ .dark-mode .loader-spinner,
  .dark-mode .data-s,
  .footer.dark-mode  {
   color:rgb(248, 124, 0);

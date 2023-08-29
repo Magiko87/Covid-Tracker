@@ -2,10 +2,10 @@
 import React from 'react';
 import styles from "../Loader/loaader.css";
 
-const Loader = () => {
+const Loader = ({ isDarkMode }) => {
   return (
     <div className="loader-container">
-      <div className="loader-spinner spinner-border" role="status">
+      <div className={`loader-spinner spinner-border ${isDarkMode ? 'dark-mode' : ''}`} role="status">
         
       </div>
     </div>
