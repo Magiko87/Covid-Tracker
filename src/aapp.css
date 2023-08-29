@@ -109,7 +109,8 @@ margin-top: 100px;
   max-width: 300px; 
   margin-top: -130px;
 }
-..descr {
+
+.descr {
   font-size: large;
   font-weight: 600;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -136,7 +137,6 @@ footer {
 
 
 
-
   /* --->Comune */
   .tit-pga{
     display: flex;
@@ -154,36 +154,12 @@ footer {
        font-size: 12px;
         max-width: 100px;
         border-collapse: collapse;
-        margin: 0 auto; /* Imposta il margine laterale a "auto" per centrare orizzontalmente */
+        margin: 0 auto; 
         box-shadow: 5px 5px rgba(0, 0, 0, 0.454);
         border: 3px solid rgb(0, 0, 0);
         background-color: rgb(182, 222, 236);
       }
       .table-container {
-        margin-top: 20px; /* Aggiunge uno spazio di 20px tra il grafico e la tabella superiore */
-      }
+        margin-top: 20px; 
       
-}
-@media (max-width: 320px) {
-  .home-container {
-      height: auto;
-      padding-top: 100px;
-      padding-bottom: 100px; 
-      position: relative; 
-  }
-
-  .tit-h {
-      margin-top: 10px;
-  }
-
-  .descr {
-      margin-bottom: 10px; 
-    }
-
-  footer {
-      position: absolute; 
-      top: 480px;
-      left: 0;
-      width: 100%;
-  }
 }
