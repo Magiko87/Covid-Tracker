@@ -24,7 +24,6 @@ margin-top: 100px;
     justify-content: center; 
     align-items: center; 
     min-height: 100vh; 
-  }
 
   /* --->RegionPage */
 .custom-select-R{
@@ -101,22 +100,21 @@ margin-top: 100px;
   justify-content: center;
   height: 100vh;
   text-align: center;
-  padding: 20px; /* Aggiungi spaziatura uniforme su tutti i lati */
+  padding: 20px; 
   box-sizing: border-box; 
 }
 
-.tit {
-  width: 100%; /* Utilizza tutta la larghezza disponibile */
-  max-width: 300px; /* Imposta una larghezza massima */
-  margin-top: 20px;
+.tit-h {
+  width: 100%; 
+  max-width: 300px; 
+  margin-top: -130px;
 }
-
-.descr {
+..descr {
   font-size: large;
   font-weight: 600;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  padding: 10px; /* Spaziatura uniforme su tutti i lati */
-  margin-top: 20px;
+  padding: 10px; 
+  margin-top: 5px;
 }
 
 .img-cont {
@@ -131,11 +129,11 @@ margin-top: 100px;
 }
 
 footer {
-  margin-top: auto; /* Sposta il footer verso il basso in fondo alla pagina */
+  margin-top: -10px; 
   padding: 10px 0;
   text-align: center;
- 
 }
+
 
 
 
@@ -165,4 +163,27 @@ footer {
         margin-top: 20px; /* Aggiunge uno spazio di 20px tra il grafico e la tabella superiore */
       }
       
+}
+@media (max-width: 320px) {
+  .home-container {
+      height: auto;
+      padding-top: 100px;
+      padding-bottom: 100px; 
+      position: relative; 
+  }
+
+  .tit-h {
+      margin-top: 10px;
+  }
+
+  .descr {
+      margin-bottom: 10px; 
+    }
+
+  footer {
+      position: absolute; 
+      top: 480px;
+      left: 0;
+      width: 100%;
+  }
 }
