@@ -1,13 +1,17 @@
+//====>DARK MODE
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+
 import React, { useState } from 'react';
 import '../DarkModeToggle/styles-dark.css'; // Assicurati che il file CSS sia correttamente importato
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 const DarkModeToggle = ({ isDarkMode, toggleDarkMode }) => {
-  // Usa uno stato locale per gestire l'icona corrente
+  //--->Stato locale per gestire l'icona corrente
   const [isSunIcon, setIsSunIcon] = useState(true);
 
-  // Funzione per cambiare l'icona e attivare/disattivare la modalità scura
+  //--->Funzione per cambiare l'icona e attivare/disattivare la modalità scura
   const handleToggle = () => {
     setIsSunIcon(!isSunIcon);
     toggleDarkMode();

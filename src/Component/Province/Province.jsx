@@ -2,6 +2,7 @@
 
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+//--->IMPORT
 import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
@@ -12,8 +13,10 @@ import Loader from "../Loader/Loader";
 import DataDisplay from "../DataDisplay/DataDisplay";
 import axios from 'axios';
 import { Helmet } from "react-helmet";
+import {darkModeClass} from "../DarkModeToggle/style";
 
 function ProvincePage({ isDarkMode }) {
+  //---Stati
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedProvince, setSelectedProvince] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -28,6 +31,7 @@ function ProvincePage({ isDarkMode }) {
 
   const { regions, provinces } = useChartData(selectedRegion, selectedProvince, setTableData);
 
+  //--->CAll API che ottiene i dati delle provivince all'avvio
   useEffect(() => {
     axios
       .get('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province-latest.json')
@@ -44,10 +48,10 @@ function ProvincePage({ isDarkMode }) {
         console.error('Errore nella richiesta API:', error);
       });
   }, []);
-
+//---> Effetto per gestire il caricamento delle province in base alla regione selezionata
   useEffect(() => {
     if (selectedRegion) {
-      // Se è selezionata solo la regione, mostra tutte le province di quella regione
+      //--->Filtro delle province in base alla regione selezionata
       const filteredProvinces = chartData.provinces.filter((province) => province.denominazione_regione === selectedRegion);
       
       // Rimuovi le ultime due province dalla lista
@@ -61,7 +65,7 @@ function ProvincePage({ isDarkMode }) {
       setIsLoading(false);
     }
   }, [selectedRegion, chartData.provinces]);
-
+//--->Effetto per gestire il caricamento dei dati della tabella
   useEffect(() => {
     if (tableData.length > 0) {
       setIsLoading(false);
@@ -70,20 +74,21 @@ function ProvincePage({ isDarkMode }) {
     }
   }, [tableData]);
 
+  //--->Gestione per il cambio di regione
   const handleRegionChange = (e) => {
     setSelectedRegion(e.target.value);
     setSelectedProvince('');
     setChartType('bar');
     setIsLoading(true);
   };
-
+//---> Gestione per il cambio di provincia
   const handleProvinceChange = (e) => {
     setSelectedProvince(e.target.value);
     setChartType('bar');
     setIsLoading(true);
     setHasError(false);
   };
-
+  //--->Opzioni del grafico
   const chartOptions = {
     
     scales: {
@@ -148,10 +153,10 @@ function ProvincePage({ isDarkMode }) {
       ],
     };
   }
-
+//--->Rendering
   return (
     <div>
-      <h1 className={`tit-pga ${isDarkMode ? 'dark-mode' : ''}`}>Province</h1>
+      <h1 className={`tit-pga ${darkModeClass}`}>Province</h1>
       <Helmet>
         <title>Province</title>
         <meta name="description" content="Pagina Province" />

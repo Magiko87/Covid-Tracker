@@ -1,5 +1,8 @@
+//====>REGION PAGE
+
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+//--->IMPORT
 import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
@@ -9,31 +12,35 @@ import ErrorPage from '../Error/Error';
 import Loader from "../Loader/Loader";
 import  DataDisplay from "../DataDisplay/DataDisplay";
 import { Helmet } from "react-helmet";
+import {darkModeClass} from "../DarkModeToggle/style";
 
-
-
+//--->Componente RegionPage
 function RegionPage({isDarkMode}) {
+  //--->Stati
   const [selectedRegion, setSelectedRegion] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [chartType, setChartType] = useState('bar');
   const [tableData, setTableData] = useState([]);
   const [hasError, setHasError] = useState(false);
 
+   //--->Gestione Caricamento
   useEffect(() => {
     if (tableData.length > 0) {
       setIsLoading(false);
     }
   }, [tableData]);
 
+   //--->Dati del grafico utilizzando l'hook personalizzato
   const chartData = useRegionData(selectedRegion, setTableData);
 
+   //---> Gestione del cambio  regione 
   const handleRegionChange = (e) => {
     setSelectedRegion(e.target.value);
     setChartType('line');
     setIsLoading(true);
     setHasError(false);
   };
-
+  //--->Opzioni per il Grafico
   const chartOptions = {
     scales: {
       x: {
@@ -60,10 +67,10 @@ function RegionPage({isDarkMode}) {
     maintainAspectRatio: false, 
     height: 400,
   };
-
+  //---> Renderizza il componente
   return (
     <div>
-      <h1 className={`tit-pga ${isDarkMode ? 'dark-mode' : ''}`}>Regioni</h1>
+      <h1 className={`tit-pga ${darkModeClass}`}>Regioni</h1>
       <Helmet>
         <title>Regioni</title>
         <meta name="description" content="Pagina Regioni" />
