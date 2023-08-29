@@ -11,7 +11,7 @@ body {
 }
 
 
-  .tit{
+  .tit-h{
     color: rgb(30, 8, 2);
     padding-top: 30px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -34,7 +34,7 @@ body {
 
   }
   .descr{
-    
+    color: black;
     font-size: xx-large;
     font-weight: 600;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

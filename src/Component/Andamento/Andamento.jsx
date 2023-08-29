@@ -23,10 +23,12 @@ function AndamentoPage() {
 
 
   useEffect(() => {
+    //--->Gestione degli errori o dati mancanti
     if (chartData.labels && chartData.datasets) {
       setIsLoading(false);
       setHasError(false);
-
+      
+ //--->Calcolo della somma 
       const sum = chartData.datasets[0].data.reduce((acc, currentValue) => acc + currentValue, 0);
       const formattedSum = sum.toLocaleString('it-IT', {
         style: 'decimal',
@@ -47,7 +49,7 @@ function AndamentoPage() {
       },
     },
   };
-
+//--->Rendering
   return (
     <div>
       <h1 className='tit-pga'>Andamento</h1>

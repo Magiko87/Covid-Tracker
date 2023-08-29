@@ -1,3 +1,5 @@
+//====>DATA DISPLAY
+
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -15,6 +17,8 @@ function DataDisplay(isDarkMode) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+
+         //--->Richieste asincrone per ottenere dati da diverse fonti
         const dataRegioni = await axios.get('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni-latest.json');
         setData1(dataRegioni.data);
 
@@ -41,6 +45,7 @@ function DataDisplay(isDarkMode) {
         <Loader />
       ) : (
         <div>
+          {/*---> Visualizza la data di aggiornamento */}
            <h6 className={`data-s ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>Dati aggiornati al {format(new Date(data1[0].data), 'dd MMMM yyyy')}</h6>
 
         </div>

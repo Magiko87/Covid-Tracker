@@ -1,3 +1,4 @@
+//====>COMPONENTE APP 
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import routes from "./Component/Routes/Routes";
@@ -11,7 +12,7 @@ function App() {
     setIsDarkMode(!isDarkMode);
   };
 
-  // Aggiungi la classe "dark-mode" al body quando la modalità scura è attiva
+  //--->Aggiungi la classe "dark-mode" al body quando la modalità scura è attiva
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add("dark-mode");
@@ -23,6 +24,7 @@ function App() {
   return (
     <div className={`app ${isDarkMode ? "dark-mode" : ""}`}>
       <BrowserRouter>
+      {/*---> Passa lo stato della modalità scura e la funzione di toggle al componente Navbar */}
         <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} routes={routes} />
         <Routes>
           {routes.map((route, index) => (
