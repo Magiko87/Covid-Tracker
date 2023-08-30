@@ -8,7 +8,7 @@ import ErrorPage from "../error/Error";
 import FourthChart from "./FourhChartData";
 import FifthChart from "./FifthChartData";
 import Loader from "../loader/Loader";
-import DataDisplay from "../dataDisplay/DataDisplay";
+import DataDisplay from "../datadisplay/DataDisplay";
 import "../andamento/style.css";
 import { Helmet } from "react-helmet";
 
