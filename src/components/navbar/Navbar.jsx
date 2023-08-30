@@ -1,9 +1,9 @@
 import {useState}  from 'react';
 import PropTypes from 'prop-types'; // Assicurati di importare PropTypes
-import './naavbar.css';
+import './navbar.css';
 import { Link } from 'react-router-dom';
-import routes from '../Routes/Routes';
-import DarkModeToggle from "../DarkModeToggle/DarkModeToggle";
+import routes from '../routes/Routes';
+import DarkModeToggle from "../darkmodetoggle/DarkModeToggle";
 
 const Navbar = ({ isDarkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,7 +1,7 @@
-import HomePage from "../Home/Home";
-import RegionPage from "../Region/Region";
-import ProvincePage from "../Province/Province";
-import AndamentoPage from "../Andamento/Andamento";
+import HomePage from "../home/Home";
+import RegionPage from "../region/Region";
+import ProvincePage from "../province/Province";
+import AndamentoPage from "../andamento/Andamento";
 
 const routes = [
   { path: "/", element: <HomePage isDarkMode={true} />, name: "Home" }, // Passa il valore corretto di isDarkMode

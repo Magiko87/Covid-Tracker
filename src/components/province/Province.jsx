@@ -6,13 +6,13 @@ import  { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
 import useChartData from "./UseChartData";
-import "./prrovince.css";
-import ErrorPage from '../Error/Error';
-import Loader from "../Loader/Loader";
-import DataDisplay from "../DataDisplay/DataDisplay";
+import "./province.css";
+import ErrorPage from '../error/Error';
+import Loader from "../loader/Loader";
+import DataDisplay from "../dataDisplay/DataDisplay";
 import axios from 'axios';
 import { Helmet } from "react-helmet";
-import {darkModeClass} from "../DarkModeToggle/style";
+import {darkModeClass} from "../darkmodetoggle/style";
 
 function ProvincePage() {
   //---Stati

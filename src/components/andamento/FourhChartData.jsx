@@ -1,14 +1,15 @@
-//====>SECOND CHART DATA
+//====>FOURH CHART DATA
 
 
-import { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 import axios from 'axios';
-import Loader from "../Loader/Loader";
-function SecondChart() {
+import Loader from "../loader/Loader";
+
+function FourthChart() {
   const [chartData, setChartData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [totalTamponi, setTotalTamponi] = useState(0);
+  const [Totalcasi, setTotalcasi] = useState(0);
 
   useEffect(() => {
     axios
@@ -18,33 +19,29 @@ function SecondChart() {
 
         if (data && data.length > 0) {
           const lastDataPoint = data[data.length - 1];
-          const tamponiMolecolari = lastDataPoint.tamponi_test_molecolare;
-          const tamponiAntigenici = lastDataPoint.tamponi_test_antigenico_rapido;
-          
-          // Calcola la somma dei tamponi
-          const totalTamponiValue = tamponiMolecolari + tamponiAntigenici;
-          const formattedSum = totalTamponiValue.toLocaleString('it-IT', {
+          const deceduti = lastDataPoint.deceduti;
+          const guariti = lastDataPoint.dimessi_guariti;
+          const positivi=lastDataPoint.totale_positivi;
+
+          // Calcola la somma delle osp.
+          const totalCasiValue = positivi + guariti + deceduti;
+          const formattedSum = totalCasiValue.toLocaleString('it-IT', {
             style: 'decimal',
             useGrouping: true,
           });
-          
-          
-
-          
 
           const chartData = {
-            labels: ['Tamponi Test Molecolare', 'Tamponi Test Antigenico Rapido'],
+            labels: ['Positivi', 'Guariti','Deceduti'],
             datasets: [
               {
-                data: [tamponiMolecolari, tamponiAntigenici],
-                backgroundColor: ['yellow', 'red'],
+                data: [positivi, guariti,deceduti],
+                backgroundColor: ['#d3305d', '#007fff','#293133'],
               },
             ],
           };
 
-
           setChartData(chartData);
-          setTotalTamponi(formattedSum);
+          setTotalcasi(formattedSum);
           setIsLoading(false);
         }
       })
@@ -70,7 +67,7 @@ function SecondChart() {
        <Loader />
       ) : (
         <div className="chart-container-torta">
-          <h4>TOTALE TAMPONI: {totalTamponi}</h4>
+          <h4>TOTALE CASI: {Totalcasi}</h4>
           <Pie
             data={chartData}
             options={chartOptions}
@@ -81,4 +78,4 @@ function SecondChart() {
   );
 }
 
-export default SecondChart;
+export default FourthChart;

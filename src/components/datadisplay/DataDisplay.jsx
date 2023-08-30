@@ -3,9 +3,9 @@
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Loader from '../Loader/Loader';
+import Loader from "../loader/Loader"
 import { format } from 'date-fns';
-import "./dataDisplay.css";
+import "./data-display.css";
 
 
 function DataDisplay(isDarkMode) {

@@ -4,12 +4,12 @@ import "chart.js/auto";
 import useChartData from "./FirstChartData";
 import SecondChart from "./SecondChart";
 import ThirdChart from "./ThirdChart";
-import ErrorPage from "../Error/Error";
+import ErrorPage from "../error/Error";
 import FourthChart from "./FourhChartData";
 import FifthChart from "./FifthChartData";
-import Loader from "../Loader/Loader";
-import DataDisplay from "../DataDisplay/DataDisplay";
-import "../Andamento/style.css";
+import Loader from "../loader/Loader";
+import DataDisplay from "../dataDisplay/DataDisplay";
+import "../andamento/style.css";
 import { Helmet } from "react-helmet";
 
 function AndamentoPage() {

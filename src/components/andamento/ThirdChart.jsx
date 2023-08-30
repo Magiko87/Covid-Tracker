@@ -1,15 +1,15 @@
-//====>FOURH CHART DATA
 
+//====>THIRD CHART DATA
 
-import  { useState, useEffect } from 'react';
-import { Pie } from 'react-chartjs-2';
+import { useState, useEffect } from 'react';
+import { Doughnut } from 'react-chartjs-2';
 import axios from 'axios';
-import Loader from "../Loader/Loader";
+import Loader from "../loader/Loader";
 
-function FourthChart() {
+function ThirdChart() {
   const [chartData, setChartData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [Totalcasi, setTotalcasi] = useState(0);
+  const [totalOsp, setTotalOsp] = useState(0);
 
   useEffect(() => {
     axios
@@ -19,29 +19,29 @@ function FourthChart() {
 
         if (data && data.length > 0) {
           const lastDataPoint = data[data.length - 1];
-          const deceduti = lastDataPoint.deceduti;
-          const guariti = lastDataPoint.dimessi_guariti;
-          const positivi=lastDataPoint.totale_positivi;
+          const terapiaIntensiva = lastDataPoint.terapia_intensiva;
+          const ricoveratiSintomatici = lastDataPoint.ricoverati_con_sintomi;
 
           // Calcola la somma delle osp.
-          const totalCasiValue = positivi + guariti + deceduti;
-          const formattedSum = totalCasiValue.toLocaleString('it-IT', {
+          const totalOspValue = terapiaIntensiva + ricoveratiSintomatici;
+          const formattedSum = totalOspValue.toLocaleString('it-IT', {
             style: 'decimal',
             useGrouping: true,
           });
+          
 
           const chartData = {
-            labels: ['Positivi', 'Guariti','Deceduti'],
+            labels: ['Terapia Intensiva', 'Ricoverati Asintomatici'],
             datasets: [
               {
-                data: [positivi, guariti,deceduti],
-                backgroundColor: ['#d3305d', '#007fff','#293133'],
+                data: [terapiaIntensiva, ricoveratiSintomatici],
+                backgroundColor: ['#00ff00', '#008080'],
               },
             ],
           };
 
           setChartData(chartData);
-          setTotalcasi(formattedSum);
+          setTotalOsp(formattedSum);
           setIsLoading(false);
         }
       })
@@ -67,8 +67,8 @@ function FourthChart() {
        <Loader />
       ) : (
         <div className="chart-container-torta">
-          <h4>TOTALE CASI: {Totalcasi}</h4>
-          <Pie
+          <h4>TOTALE OSPEDALIZZATI: {totalOsp}</h4>
+          <Doughnut
             data={chartData}
             options={chartOptions}
           />
@@ -78,4 +78,4 @@ function FourthChart() {
   );
 }
 
-export default FourthChart;
+export default ThirdChart;

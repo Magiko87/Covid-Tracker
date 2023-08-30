@@ -1,9 +1,9 @@
 
 import 'react';
-import "./loaader.css"
-import {darkModeClass} from "../DarkModeToggle/style";
+import "./loader.css"
+import {darkModeClass} from "../darkmodetoggle/style";
 
-const Loader = ({ isDarkMode }) => {
+const Loader = () => {
   return (
     <div className="loader-container">
       <div className={`loader-spinner spinner-border ${darkModeClass}`} role="status">

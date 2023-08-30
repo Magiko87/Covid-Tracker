@@ -5,13 +5,13 @@
 import  { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
-import useRegionData from "../Region/UseChartData"; 
-import  "../Region/reegion.css";  
-import ErrorPage from '../Error/Error';
-import Loader from "../Loader/Loader";
-import  DataDisplay from "../DataDisplay/DataDisplay";
+import useRegionData from "../region/UseChartData"; 
+import  "../region/region.css";  
+import ErrorPage from '../error/Error';
+import Loader from "../loader/Loader";
+import  DataDisplay from "../datadisplay/DataDisplay";
 import { Helmet } from "react-helmet";
-import {darkModeClass} from "../DarkModeToggle/style";
+import {darkModeClass} from "../darkmodetoggle/style";
 
 //--->Componente RegionPage
 function RegionPage() {

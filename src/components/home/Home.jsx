@@ -1,6 +1,6 @@
 import 'react';
 import PropTypes from 'prop-types'; // Assicurati di importare PropTypes
-import '../Home/hoome.css';
+import '../home/home.css';
 import { Helmet } from 'react-helmet';
 
 function HomePage({ isDarkMode }) {

@@ -1,15 +1,14 @@
+//====>SECOND CHART DATA
 
-//====>THIRD CHART DATA
 
 import { useState, useEffect } from 'react';
-import { Doughnut } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 import axios from 'axios';
-import Loader from "../Loader/Loader";
-
-function ThirdChart() {
+import Loader from "../loader/Loader";
+function SecondChart() {
   const [chartData, setChartData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [totalOsp, setTotalOsp] = useState(0);
+  const [totalTamponi, setTotalTamponi] = useState(0);
 
   useEffect(() => {
     axios
@@ -19,29 +18,33 @@ function ThirdChart() {
 
         if (data && data.length > 0) {
           const lastDataPoint = data[data.length - 1];
-          const terapiaIntensiva = lastDataPoint.terapia_intensiva;
-          const ricoveratiSintomatici = lastDataPoint.ricoverati_con_sintomi;
-
-          // Calcola la somma delle osp.
-          const totalOspValue = terapiaIntensiva + ricoveratiSintomatici;
-          const formattedSum = totalOspValue.toLocaleString('it-IT', {
+          const tamponiMolecolari = lastDataPoint.tamponi_test_molecolare;
+          const tamponiAntigenici = lastDataPoint.tamponi_test_antigenico_rapido;
+          
+          // Calcola la somma dei tamponi
+          const totalTamponiValue = tamponiMolecolari + tamponiAntigenici;
+          const formattedSum = totalTamponiValue.toLocaleString('it-IT', {
             style: 'decimal',
             useGrouping: true,
           });
           
+          
+
+          
 
           const chartData = {
-            labels: ['Terapia Intensiva', 'Ricoverati Asintomatici'],
+            labels: ['Tamponi Test Molecolare', 'Tamponi Test Antigenico Rapido'],
             datasets: [
               {
-                data: [terapiaIntensiva, ricoveratiSintomatici],
-                backgroundColor: ['#00ff00', '#008080'],
+                data: [tamponiMolecolari, tamponiAntigenici],
+                backgroundColor: ['yellow', 'red'],
               },
             ],
           };
 
+
           setChartData(chartData);
-          setTotalOsp(formattedSum);
+          setTotalTamponi(formattedSum);
           setIsLoading(false);
         }
       })
@@ -67,8 +70,8 @@ function ThirdChart() {
        <Loader />
       ) : (
         <div className="chart-container-torta">
-          <h4>TOTALE OSPEDALIZZATI: {totalOsp}</h4>
-          <Doughnut
+          <h4>TOTALE TAMPONI: {totalTamponi}</h4>
+          <Pie
             data={chartData}
             options={chartOptions}
           />
@@ -78,4 +81,4 @@ function ThirdChart() {
   );
 }
 
-export default ThirdChart;
+export default SecondChart;
