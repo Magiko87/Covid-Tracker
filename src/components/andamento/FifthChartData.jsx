@@ -52,9 +52,10 @@ const FifthChart = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Nuovi Positivi</h2>
-      <Line data={chartData} />
+    <div className="chart-container-torta" style={{ overflowX: "scroll", width: "100%" }}>
+      <h2 >Nuovi Positivi</h2>
+      <div style={{ width: "100%" }}></div>
+      <Line  data={chartData} />
     </div>
   );
 };
