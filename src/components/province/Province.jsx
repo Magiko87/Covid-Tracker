@@ -9,7 +9,7 @@ import useChartData from "./UseChartData";
 import "./province.css";
 import ErrorPage from '../error/Error';
 import Loader from "../loader/Loader";
-import DataDisplay from "../dataDisplay/DataDisplay";
+import DataDisplay from "../datadisplay/DataDisplay";
 import axios from 'axios';
 import { Helmet } from "react-helmet";
 import {darkModeClass} from "../darkmodetoggle/style";
