@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {PropTypes} from 'prop-types'; 
 
-import '../darkModeToggle/styles-dark.css';
+import '../darkmodetoggle/styles-dark.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
